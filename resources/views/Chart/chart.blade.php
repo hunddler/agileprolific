@@ -56,7 +56,7 @@ $var_objective = 'Page-'.$type;
                                                         <button class="btn btn-circle btn-xl btn-tolbar dropdown-toggle"
                                                             type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">
-                                                            <img src="{{ asset('assets/images/icons/dots.svg') }}">
+                                                            <img src="{{ asset('public/assets/images/icons/dots.svg') }}">
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <a class="dropdown-item" href="javascript:void(0);"
@@ -353,7 +353,7 @@ $var_objective = 'Page-'.$type;
                        
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img src="{{asset('assets/images/icons/minus.svg')}}">
+                        <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                     </button>
                 </div> --}}
                 <div class="modal-body">
@@ -378,7 +378,7 @@ $var_objective = 'Page-'.$type;
                             </div>
                             <div class="ml-auto">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <img src="{{ asset('assets/images/icons/minus.svg') }}">
+                                    <img src="{{ asset('public/assets/images/icons/minus.svg') }}">
                                 </button>
                             </div>
                         </div>
@@ -428,7 +428,7 @@ $var_objective = 'Page-'.$type;
                             </div>
                             <div class="ml-auto">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <img src="{{ asset('assets/images/icons/minus.svg') }}">
+                                    <img src="{{ asset('public/assets/images/icons/minus.svg') }}">
                                 </button>
                             </div>
                         </div>

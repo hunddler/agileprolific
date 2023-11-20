@@ -72,7 +72,7 @@ $var_objective = 'Report-'.$type;
                                                                     </div>
                                                     
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <img src="http://dev.agileprolific.com/assets/images/icons/minus.svg">
+                                                                        <img src="http://dev.agileprolific.com/public/assets/images/icons/minus.svg">
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
@@ -205,7 +205,7 @@ $var_objective = 'Report-'.$type;
                                                                     <span id="sprint-error" class="ml-3 text-danger"></span>
                                                                 </div>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                                                                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -241,7 +241,7 @@ $var_objective = 'Report-'.$type;
                                                 </div>
 
                                                     <button class="btn-circle btn-tolbar" data-placement="top" title="Delete Report">
-                                                        <img src="{{asset('assets/images/icons/delete.svg')}}">
+                                                        <img src="{{asset('public/assets/images/icons/delete.svg')}}">
                                                     </button>
                                                 </td>
                                             </tr>

@@ -72,7 +72,7 @@ $var_objective = "Org-Unit-team";
                                                         @if($r->id == $team->lead_id)
                                                         <td class="image-cell">
                                                             @if($r->image != NULL)
-                                                            <img src="{{asset('assets/images/'.$r->image)}}" alt="Example Image">
+                                                            <img src="{{asset('public/assets/images/'.$r->image)}}" alt="Example Image">
                                                             @else
                                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
                                                             @endif
@@ -85,10 +85,10 @@ $var_objective = "Org-Unit-team";
                                                         
                                                         <td>
                                                               <button class="btn-circle btn-tolbar" data-toggle="modal" data-target="#edit{{$team->id}}">
-                                                                <img src="{{asset('assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
+                                                                <img src="{{asset('public/assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
                                                             </button>
                                                             <button class="btn-circle btn-tolbar" data-toggle="modal" data-target="#delete{{$team->id}}">
-                                                                <img src="{{asset('assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
+                                                                <img src="{{asset('public/assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -136,7 +136,7 @@ $var_objective = "Org-Unit-team";
                                                                             </div>
                                                                         </div>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                         <img src="{{asset('assets/images/icons/minus.svg')}}">
+                                                                         <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -178,7 +178,7 @@ $var_objective = "Org-Unit-team";
                                                                                         <div class="d-flex flex-row align-items-center ">
                                                                                             <div>
                                                                                                  @if($r->image != NULL)
-                                                                                                <img width="45px" height="45px" src="{{asset('assets/images/'.$r->image)}}" alt="Example Image">
+                                                                                                <img width="45px" height="45px" src="{{asset('public/assets/images/'.$r->image)}}" alt="Example Image">
                                                                                                 @else
                                                                                                 <img width="45px" height="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
                                                                                                 @endif
@@ -235,7 +235,7 @@ $var_objective = "Org-Unit-team";
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <img src="{{asset('assets/images/icons/minus.svg')}}">
+                 <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -288,7 +288,7 @@ $var_objective = "Org-Unit-team";
                                 <div class="d-flex flex-row align-items-center ">
                                     <div>
                                          @if($r->image != NULL)
-                                        <img width="45px" height="45px" src="{{asset('assets/images/'.$r->image)}}" alt="Example Image">
+                                        <img width="45px" height="45px" src="{{asset('public/assets/images/'.$r->image)}}" alt="Example Image">
                                         @else
                                         <img width="45px" height="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
                                         @endif

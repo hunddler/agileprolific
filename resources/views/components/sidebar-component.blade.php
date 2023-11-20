@@ -3,12 +3,12 @@
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center sidebar" id="navbarSupportedContent">
             <li class="nav-item">
                 <a href="{{url('/dashboard/organizations')}}" @if (url()->current() == url('dashboard/organizations')) class="nav-link active" @else class="nav-link"  @endif  aria-current="page" title="" data-toggle="tooltip" data-placement="right" data-original-title="Dashboard">
-                    <img src="{{asset('assets/images/icons/home.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/home.svg')}}">
                 </a>
             </li>
             <!--<li>-->
             <!--    <a href="#pane" class="nav-link" title="" data-toggle="tooltip" data-placement="right" data-original-title="Organizations">-->
-            <!--        <img src="{{asset('assets/images/icons/departments.svg')}}">-->
+            <!--        <img src="{{asset('public/assets/images/icons/departments.svg')}}">-->
             <!--    </a>-->
             <!--</li>-->
             <div class="border-top py-2">
@@ -66,7 +66,7 @@
             <li>
                 <a href="{{ route('logout') }}"  onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="nav-link" title="" data-toggle="tooltip" data-placement="right" data-original-title="Logout">
-                    <img src="{{asset('assets/images/icons/logout.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/logout.svg')}}">
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -75,7 +75,7 @@
         </ul>
         <div class="align-items-center mx-auto mb-3">
             <button class="btn-circle btn-xl btn-help">
-                <img src="{{asset('assets/images/icons/help.svg')}}">
+                <img src="{{asset('public/assets/images/icons/help.svg')}}">
             </button>
         </div>
     </div>

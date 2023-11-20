@@ -37,7 +37,7 @@
                                                         <button class="btn btn-circle btn-xl btn-tolbar dropdown-toggle"
                                                             type="button" id="dropdownMenuButton" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">
-                                                            <img src="{{ asset('assets/images/icons/dots.svg') }}">
+                                                            <img src="{{ asset('public/assets/images/icons/dots.svg') }}">
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <a class="dropdown-item" href="javascript:void(0);"

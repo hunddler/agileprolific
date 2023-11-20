@@ -16,7 +16,7 @@
         <div class="col-md-6" id="editbutton{{$s->id}}">
         <div class="dropdown">
         <button class="btn-circle btn-tolbar dropdown-toggle bg-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-        <img src="{{ asset('assets/images/icons/dots.svg') }}">
+        <img src="{{ asset('public/assets/images/icons/dots.svg') }}">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
          <a class="dropdown-item" href="#" onclick="editstory({{$s->id}},'{{$s->epic_story_name}}')">Edit</a>

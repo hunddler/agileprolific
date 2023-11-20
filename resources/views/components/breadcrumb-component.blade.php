@@ -54,7 +54,7 @@ $sprint = DB::table('sprint')->where('user_id',Auth::id())->where('status',NULL)
                      
                     </select>
                        <button class="btn-circle btn-tolbar bg-transparent" type="button" onclick="GetFagEpic();" >
-                       <img src="{{asset('assets/images/icons/filter.svg')}}" width="20" width="20">
+                       <img src="{{asset('public/assets/images/icons/filter.svg')}}" width="20" width="20">
                        </button>
                     </div>
       
@@ -63,13 +63,13 @@ $sprint = DB::table('sprint')->where('user_id',Auth::id())->where('status',NULL)
             </div>
             <!--<div class="mr-3">-->
             <!--    <button class="btn-circle btn-tolbar bg-transparent">-->
-            <!--        <img src="{{asset('assets/images/icons/share.svg')}}" width="20" width="20">-->
+            <!--        <img src="{{asset('public/assets/images/icons/share.svg')}}" width="20" width="20">-->
             <!--    </button>-->
             <!--    <button class="btn-circle btn-tolbar bg-transparent">-->
-            <!--        <img src="{{asset('assets/images/icons/calendar.svg')}}" width="20" width="20">-->
+            <!--        <img src="{{asset('public/assets/images/icons/calendar.svg')}}" width="20" width="20">-->
             <!--    </button>-->
             <!--    <button class="btn-circle btn-tolbar bg-transparent">-->
-            <!--        <img src="{{asset('assets/images/icons/filter.svg')}}" width="20" width="20">-->
+            <!--        <img src="{{asset('public/assets/images/icons/filter.svg')}}" width="20" width="20">-->
             <!--    </button>-->
             <!--</div>-->
             <!--<div class="mr-3">-->

@@ -104,7 +104,7 @@ $var_objective = "Backlog";
                                                                     <span id="" class="ml-3 text-danger"></span>
                                                                 </div>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                                                                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -231,10 +231,10 @@ $var_objective = "Backlog";
                                                         </td>
                                                         <td>
                                                             <button class="btn-circle btn-tolbar" data-toggle="modal" data-target="#create{{$backlog->id}}" >
-                                                                <img src="{{asset('assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
+                                                                <img src="{{asset('public/assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
                                                             </button>
                                                             <button class="btn-circle btn-tolbar" data-toggle="modal" data-target="#delete{{$backlog->id}}">
-                                                                <img src="{{asset('assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
+                                                                <img src="{{asset('public/assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -285,7 +285,7 @@ $var_objective = "Backlog";
                                             <span id="" class="ml-3 text-danger"></span>
                                         </div>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <img src="{{asset('assets/images/icons/minus.svg')}}">
+                                            <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                                         </button>
                                     </div>
                                     <div class="modal-body">
@@ -385,7 +385,7 @@ $var_objective = "Backlog";
                     <span id="" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -472,7 +472,7 @@ $var_objective = "Backlog";
                     <span id="" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -569,7 +569,7 @@ $var_objective = "Backlog";
                     <span id="" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">

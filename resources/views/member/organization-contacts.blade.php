@@ -15,7 +15,7 @@ $var_objective = "Org-Contact";
           
             <div class="flex-shrink-0 p-3 bg-white sub-nav" id="panel" style="width: 280px; margin-top: 5%;">
                 <button id="closeBtn" class="close-button">
-                    <img src="{{asset('assets/images/icons/collaps.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/collaps.svg')}}">
                 </button>
                 <h6 class="title">Menu</h6>
                 <ul class="list-unstyled ps-0">
@@ -92,7 +92,7 @@ $var_objective = "Org-Contact";
                                                         </td>
                                                         <td class="image-cell">
                                                             @if($member->image != NULL)
-                                                            <img src="{{asset('assets/images/'.$member->image)}}" alt="Example Image">
+                                                            <img src="{{asset('public/assets/images/'.$member->image)}}" alt="Example Image">
                                                             @else
                                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
                                                             @endif
@@ -107,10 +107,10 @@ $var_objective = "Org-Contact";
                                                         
                                                         <td>
                                                             <button class="btn-circle btn-tolbar" data-toggle="modal" data-target="#edit-contact{{$member->id}}">
-                                                                <img src="{{asset('assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
+                                                                <img src="{{asset('public/assets/images/icons/edit.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Edit">
                                                             </button>
                                                             <button class="btn-circle btn-tolbar" data-toggle="modal" onclick="deletecontact({{$member->id}})" data-target="#delete-contact">
-                                                                <img src="{{asset('assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
+                                                                <img src="{{asset('public/assets/images/icons/delete.svg')}}" data-toggle="tooltip" data-placement="top" data-original-title="Delete">
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -129,7 +129,7 @@ $var_objective = "Org-Contact";
                                                         
                                                     </div>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <img src="{{asset('assets/images/icons/minus.svg')}}">
+                                                        <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
@@ -175,7 +175,7 @@ $var_objective = "Org-Contact";
                                                             
                                                             <input type="hidden" id="old_image" name="old_image" value="{{ $member->image }}">
                                                             <div class="col-md-12 col-lg-12 col-xl-12">
-                                                            <img src="{{asset('assets/images/'.$member->image)}}" style="width:100px; height:100px; object-fit:cover" alt="Example Image">
+                                                            <img src="{{asset('public/assets/images/'.$member->image)}}" style="width:100px; height:100px; object-fit:cover" alt="Example Image">
                                                                 <div class="form-group mb-0">
                                                                     <input type="file" class="form-control" name="image" >
                                                                     <label for="profile">Profile Picture</label>
@@ -227,7 +227,7 @@ $var_objective = "Org-Contact";
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">

@@ -5,7 +5,7 @@
             @endphp  
             <div class="flex-shrink-0 p-3 bg-white sub-nav" id="panel-new" style="width: 280px; margin-top: 5%;">
                 <button id="closeBtn" class="close-button">
-                    <img src="{{asset('assets/images/icons/collaps.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/collaps.svg')}}">
                 </button>
                 <h6 class="title">Menu </h6>
                 <ul class="list-unstyled ps-0">

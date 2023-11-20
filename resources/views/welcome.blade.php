@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- MDB -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('public/assets/css/style.css')}}">
     <title>Login</title>
     <style type="text/css">
     </style>
@@ -102,21 +102,21 @@
                             <div class="row social-buttons">
                                 <div class="col-xl-4 col-lg-4 col-md-4 p-2">
                                     <button class="btn btn-white btn-block">
-                                        <img src="{{asset('assets/images/icons/google.svg')}}">
+                                        <img src="{{asset('public/assets/images/icons/google.svg')}}">
                                         <a href="{{url('/auth/google')}}" class="btn"> Google</a>
                                     </button>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 p-2">
                                     <a href="{{url('/auth/facebook')}}">
                                         <button class="btn btn-white btn-block">
-                                            <img src="{{asset('assets/images/icons/facebook.svg')}}">
+                                            <img src="{{asset('public/assets/images/icons/facebook.svg')}}">
                                             Facebook
                                         </button>
                                         </a>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 p-2">
                                     <button class="btn btn-white btn-block">
-                                        <img src="{{asset('assets/images/icons/apple.svg')}}">
+                                        <img src="{{asset('public/assets/images/icons/apple.svg')}}">
                                         Apple
                                     </button>
                                 </div>

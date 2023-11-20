@@ -4,7 +4,7 @@
                                 <div class="d-flex flex-row align-items-center ">
                                     <div>
                                          @if($r->image != NULL)
-                                        <img width="45px" height="45px" src="{{asset('assets/images/'.$r->image)}}" alt="Example Image">
+                                        <img width="45px" height="45px" src="{{asset('public/assets/images/'.$r->image)}}" alt="Example Image">
                                         @else
                                         <img width="45px" height="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
                                         @endif

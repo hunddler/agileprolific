@@ -128,11 +128,11 @@
                                             @endphp
                                     <div class="action ml-0">
                                         <button class="btn btn-icon btn-circle btn-tolbar ml-auto " onclick="editobjective({{$obj->id}},'{{$obj->objective_name}}','{{$obj->start_date}}','{{$obj->end_date}}','{{$trimmedStringobj}}','{{$obj->status}}')" data-toggle="modal" data-target="#edit-objective">
-                                            <img src="{{ asset('assets/images/icons/edit.svg') }}" alt="Edit"
+                                            <img src="{{ asset('public/assets/images/icons/edit.svg') }}" alt="Edit"
                                                 style="border-radius: 50%; width: 18px; height: 18px;">
                                         </button>
                                         <button class="btn btn-icon btn-circle btn-tolbar delete-obj mr-2" onclick="deleteobj({{$obj->id}})" data-toggle="modal" data-target="#delete-objective">
-                                            <img src="{{ asset('assets/images/icons/delete.svg') }}" alt="Delete"
+                                            <img src="{{ asset('public/assets/images/icons/delete.svg') }}" alt="Delete"
                                                 style="border-radius: 50%; width: 18px; height: 18px;">
                                         </button>
                                     </div>
@@ -310,12 +310,12 @@
                                                             <div class="action ml-0">
                                                                 <button
                                                                     class="btn btn-icon btn-circle bg-white btn-tolbar ml-auto" onclick="editobjectivekey({{$key->id}},'{{$key->key_name}}','{{$key->key_start_date}}','{{$key->key_end_date}}','{{$trimmedStringkey}}','{{$key->weight}}','{{$obj->id}}')" data-toggle="modal" data-target="#edit-key-result">
-                                                                    <img src="{{ asset('assets/images/icons/edit.svg') }}"
+                                                                    <img src="{{ asset('public/assets/images/icons/edit.svg') }}"
                                                                         alt="Edit"
                                                                         style="border-radius: 50%; width: 18px; height: 18px;">
                                                                 </button>
                                                                 <button class="btn btn-icon btn-circle bg-white btn-tolbar" onclick="deleteobjkey({{$key->id}},'{{$obj->id}}')" data-toggle="modal" data-target="#delete-objective-key">
-                                                                    <img src="{{ asset('assets/images/icons/delete.svg') }}"
+                                                                    <img src="{{ asset('public/assets/images/icons/delete.svg') }}"
                                                                         alt="Delete"
                                                                         style="border-radius: 50%; width: 18px; height: 18px;">
                                                                 </button>
@@ -509,13 +509,13 @@
                                                                                     <div class="action ml-0">
                                                                                         <button
                                                                                             class="btn btn-icon btn-circle bg-white btn-tolbar ml-auto" onclick="editinitiative({{$initiative->id}},'{{$initiative->initiative_name}}','{{$initiative->initiative_start_date}}','{{$initiative->initiative_end_date}}','{{$trimmedStringinit}}','{{$initiative->initiative_weight}}','{{$key->id}}','{{$obj->id}}')" data-toggle="modal" data-target="#edit-initiative">
-                                                                                            <img src="{{ asset('assets/images/icons/edit.svg') }}"
+                                                                                            <img src="{{ asset('public/assets/images/icons/edit.svg') }}"
                                                                                                 alt="Edit"
                                                                                                 style="border-radius: 50%; width: 18px; height: 18px;">
                                                                                         </button>
                                                                                         <button
                                                                                             class="btn btn-icon btn-circle bg-white btn-tolbar" onclick="deletekeyinitiative({{$initiative->id}},'{{$key->id}}','{{$obj->id}}')" data-toggle="modal" data-target="#delete-initiative-key">
-                                                                                            <img src="{{ asset('assets/images/icons/delete.svg') }}"
+                                                                                            <img src="{{ asset('public/assets/images/icons/delete.svg') }}"
                                                                                                 alt="Delete"
                                                                                                 style="border-radius: 50%; width: 18px; height: 18px;">
                                                                                         </button>
@@ -559,7 +559,7 @@
                                                                                                                         <button
                                                                                                                              onclick="shiftLeft({{$initiative->id}})"
                                                                                                                             class="btn-circle btn-tolbar"><img
-                                                                                                                                src="{{asset('assets/images/icons/angle-left.svg')}}"></button>
+                                                                                                                                src="{{asset('public/assets/images/icons/angle-left.svg')}}"></button>
                                                                                                                     </div>
                                                                                                                     <div>
                                                                                                                         <h3
@@ -572,7 +572,7 @@
                                                                                                                         <button
                                                                                                                             onclick="shiftRight({{$initiative->id}})"
                                                                                                                             class="btn-circle btn-tolbar"><img
-                                                                                                                                src="{{asset('assets/images/icons/angle-right.svg')}}"></button>
+                                                                                                                                src="{{asset('public/assets/images/icons/angle-right.svg')}}"></button>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -657,7 +657,7 @@
                                                                                                                                                         aria-haspopup="true"
                                                                                                                                                         aria-expanded="false" >
                                                                                                                                                         <img
-                                                                                                                                                            src="{{ asset('assets/images/icons/dots.svg') }}">
+                                                                                                                                                            src="{{ asset('public/assets/images/icons/dots.svg') }}">
                                                                                                                                                     </button>
                                                                                                                                                     @php
                                                                                                                                                     $test = preg_replace('/[^\p{L}\p{N}\s]/u', '', $e->epic_detail);
@@ -868,7 +868,7 @@
                                                                                                                         class="btn-circle btn-zoom-buttons zoom">
                                                                                                                         <img width="20px"
                                                                                                                             height="20px"
-                                                                                                                            src="{{asset('assets/images/icons/search-zoom-in.svg')}}"
+                                                                                                                            src="{{asset('public/assets/images/icons/search-zoom-in.svg')}}"
                                                                                                                             alt="zoom-In">
                                                                                                                     </button>
                                                                                                                 </div>
@@ -878,7 +878,7 @@
                                                                                                                         class="btn-circle btn-zoom-buttons zoom-out">
                                                                                                                         <img width="20px"
                                                                                                                             height="20px"
-                                                                                                                            src="{{asset('assets/images/icons/search-zoom-out.svg')}}"
+                                                                                                                            src="{{asset('public/assets/images/icons/search-zoom-out.svg')}}"
                                                                                                                             alt="zoom-Out">
                                                                                                                     </button>
                                                                                                                 </div>
@@ -888,7 +888,7 @@
                                                                                                                         class="btn-circle btn-zoom-buttons zoom-init">
                                                                                                                         <img width="20px"
                                                                                                                             height="20px"
-                                                                                                                            src="{{asset('assets/images/icons/maximize.svg')}}"
+                                                                                                                            src="{{asset('public/assets/images/icons/maximize.svg')}}"
                                                                                                                             alt="zoom-Out">
                                                                                                                     </button>
                                                                                                                 </div>
@@ -936,7 +936,7 @@
                                                                         <a href="" data-toggle="modal" onclick="initiative({{$key->id}},'{{$obj->id}}','{{$initiativeweightcounte}}','{{$key->key_start_date}}','{{$key->key_end_date}}')"
                                                                             data-target="#create-initiative"
                                                                             class="col-action"><img
-                                                                                src="{{ asset('assets/images/icons/add-circle.svg') }}"
+                                                                                src="{{ asset('public/assets/images/icons/add-circle.svg') }}"
                                                                                 class="mr-1"> Add Initiative</a>
                                                                     </div>
                                                                 </div>
@@ -960,7 +960,7 @@
                                             <div class="col-md-12">
                                                 <a href="" onclick="objective({{$obj->id}},'{{$keyweightcount}}','{{$obj->start_date}}','{{$obj->end_date}}')" data-toggle="modal" data-target="#create-key-result"
                                                     class="col-action key_obj"><img
-                                                        src="{{ asset('assets/images/icons/add-circle.svg') }}"
+                                                        src="{{ asset('public/assets/images/icons/add-circle.svg') }}"
                                                         class="mr-1"> Add Key Result</a>
                                             </div>
                                         </div>

@@ -1,4 +1,4 @@
-<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0 login-right-cont" style="background-image:url('{{asset('assets/images/info-graphics/bg-sidebar.png')}}'); ">
+<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0 login-right-cont" style="background-image:url('{{asset('public/assets/images/info-graphics/bg-sidebar.png')}}'); ">
     <!--begin::Title-->
     <div class="d-flex flex-column pt-lg-5 pt-md-4 pt-sm-5 px-lg-0 pt-5 px-7">
         <h3>
@@ -10,6 +10,6 @@
     </div>
     <!--end::Title-->
     <!--begin::Image-->
-    <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url('{{asset('assets/images/info-graphics/login-aside.png')}}');"></div>
+    <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url('{{asset('public/assets/images/info-graphics/login-aside.png')}}');"></div>
     <!--end::Image-->
 </div>

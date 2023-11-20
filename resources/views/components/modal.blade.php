@@ -15,7 +15,7 @@
 
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div id="wieght-error"></div>
@@ -114,7 +114,7 @@
 
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             
@@ -226,7 +226,7 @@
                 </div>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -305,7 +305,7 @@
                 </div>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -408,7 +408,7 @@
 
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             
@@ -503,7 +503,7 @@
                    <span  id="initiative-date-error" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             
@@ -618,7 +618,7 @@
                     <span id="org-feild-error" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -713,7 +713,7 @@
                     <span id="epic-feild-error" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -801,7 +801,7 @@
                     <span id="epic-feild-error-edit" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -897,7 +897,7 @@
                     <span id="chart-feild-error" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -952,7 +952,7 @@
                     <span id="" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -1018,7 +1018,7 @@
                     <span id="green-feild-error-edit" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -1212,7 +1212,7 @@
 
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">
@@ -1292,7 +1292,7 @@
                     <span id="sprint-error" class="ml-3 text-danger"></span>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('assets/images/icons/minus.svg')}}">
+                    <img src="{{asset('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
             <div class="modal-body">

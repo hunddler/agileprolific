@@ -3,7 +3,7 @@
                                     <div class="d-flex flex-row org-detail align-items-center mb-5">
                                         <div>
                                             @if($organization->logo)    
-                                              <img src="{{asset('assets/images/'.$organization->logo)}}" alt="Example Image">
+                                              <img src="{{asset('public/assets/images/'.$organization->logo)}}" alt="Example Image">
                                               @else
                                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU">
                                               @endif
