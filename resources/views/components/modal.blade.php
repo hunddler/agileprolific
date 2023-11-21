@@ -1202,7 +1202,7 @@
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="modal-title" id="create-epic">Flag a Risck</h5>
+                        <h5 class="modal-title" id="create-epic">Flag a Risk</h5>
                     </div>
                     <div class="col-md-12">
                         <p>Fill out the form, submit and hit the save button.</p>
@@ -1260,7 +1260,7 @@
                         
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
-                                <input type="text" class="form-control"  id="flag_description" >
+                                <textarea id="flag_description" class="form-control"></textarea>
                                 <label for="small-description">Description</label>
                             </div>
                         </div>

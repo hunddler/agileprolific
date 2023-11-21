@@ -2405,6 +2405,13 @@ class ObjectiveController extends Controller
         ]);
         
     
+        if(!DB::table('epics')->where('id',$request->flag_epic_id)->first()->flag_status)
+        {
+            DB::table('epics')->where('id',$request->flag_epic_id)->update([
+            'flag_status' => 'todoflag',
+            'flag_order' => 1,
+            ]);
+        }
         
       
         if($request->type == 'unit')

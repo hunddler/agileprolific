@@ -102,13 +102,18 @@
             @endif
             
             @if ($var_objective == 'Stream-team')
-            @include('member.navbar')
-            @include('member.sub-nav')
+                @include('member.navbar')
+                @include('member.sub-nav')
             @endif
             
             @if ($var_objective == 'Org-Unit-team')
-            @include('Business-units.unit-sidebar')
-            @include('Business-units.unit-subnav')
+                @include('Business-units.unit-sidebar')
+                @include('Business-units.unit-subnav')
+            @endif
+
+            @if ($var_objective == 'flag-impediments')
+                @include('Business-units.unit-sidebar')
+                @include('Business-units.unit-subnav')
             @endif
             
             @if ($var_objective == 'Backlog-Unit')
@@ -215,9 +220,13 @@
                  @endif
                  
                  @if ($var_objective == 'Org-Unit-team')
-                 @include('Business-units.unit-team-breadcrum')
+                    @include('Business-units.unit-team-breadcrum')
                  @endif
                  
+                 @if ($var_objective == 'flag-impediments')
+                    @include('flags.breadcrum')
+                 @endif
+
                  @if ($var_objective == 'Backlog-Unit')
                  @include('Business-units.unit-backlog-breadcrum')
                  @endif

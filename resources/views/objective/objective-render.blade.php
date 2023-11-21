@@ -670,7 +670,7 @@
                                                                                                                                                         <a class="dropdown-item"
                                                                                                                                                             href="#" onclick="DeleteEpic({{$e->id}},'{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')">Delete</a>
                                                                                                                                                         <a class="dropdown-item"
-                                                                                                                                                            href="#" data-toggle="modal" onclick="editepicflag({{$e->id}},'{{$e->flag_type}}','{{$e->flag_title}}','{{$e->flag_description}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic-flag">Flag a Risck</a>
+                                                                                                                                                            href="#" data-toggle="modal" onclick="editepicflag({{$e->id}},'{{$e->flag_type}}','{{$e->flag_title}}','{{$e->flag_description}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic-flag">Flag A Risk</a>
 
                                                                                                                                                     </div>
                                                                                                                                                 </div>

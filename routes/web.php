@@ -192,3 +192,8 @@ Route::get('get-month', [App\Http\Controllers\MemberController::class,'GetMonth'
 Route::get('Updatejira', [App\Http\Controllers\JiraController::class,'UpdateBujira']);
 
 
+Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flags')->group(function () {
+    Route::get('{organizationid}/{flagtype}', 'FlagController@flags');
+    Route::POST('change-flag-status', 'FlagController@changestatus');
+
+});

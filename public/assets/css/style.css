@@ -20798,3 +20798,124 @@ input[type="radio"]:checked {
     background-color: #3699ff !important;
     color: white !important;
 }
+
+#today-marker {
+    position: absolute;
+    width: 2px;
+    /* Adjust the width as needed */
+    background-color: red;
+    /* Choose a suitable color */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    /* Position it in the middle of the Kanban board */
+}
+.kanban-header {
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.kanban-header h4
+{
+    color: var(--Black, #000);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0px;
+    text-transform: capitalize;
+}
+
+.kanban-header small
+{
+    color: var(--Ligh-text, #A7A7A7);
+    font-size: 12.552px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.kanban-search-bar {
+  display: none;
+  margin-bottom: 10px;
+}
+
+.kanban-search-bar input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kanban-search-bar-expanded {
+  display: block;
+}
+
+.kanban-content {
+  min-height: 100px;
+}
+
+.kanban-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: move;
+}
+
+.impediment-card
+{
+    padding: 12px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.impediment-card h5
+{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.impediment-card p
+{
+    color: var(--Ligh-text, #A7A7A7);
+    font-size: 12.552px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.impediment-card a
+{
+    color: var(--Primary, #547AFF);
+    font-size: 12.552px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+.impediment-card .image-cont
+{
+    font-size: 12px;
+}
+.vertical-line {
+        border-left: 2px solid #f3f3f3; /* Adjust width and color as needed */
+        height: 20px; /* Adjust height as needed */
+
+    }
+.impediment-card .image-cont img
+{
+    width: 31px;
+    height: 31px;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 1000px;
+}
+.un-blocked
+{
+    color: var(--Black, #000);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
