@@ -799,12 +799,11 @@ $var_objective = 'PageV-'.$type;
                                                 @endphp
                                                 <div class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item"
-                                                        href="#" data-toggle="modal" onclick="editepic({{$e->id}},'{{$e->epic_name}}','{{$e->epic_start_date}}','{{$e->epic_end_date}}','{{$trimmedString}}','{{$e->epic_status}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic">Edit</a>
+                                                    <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" onclick="editepic({{$organization->id}},{{$e->id}},'{{$e->epic_name}}','{{$e->epic_start_date}}','{{$e->epic_end_date}}','{{$trimmedString}}','{{$e->epic_status}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic">Edit</a>
                                                     <a class="dropdown-item"
                                                         href="#" onclick="DeleteEpic({{$e->id}},'{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')">Delete</a>
                                                     <a class="dropdown-item"
-                                                        href="#" data-toggle="modal" onclick="editepicflag({{$e->id}},'{{$e->flag_type}}','{{$e->flag_title}}','{{$e->flag_description}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic-flag">Flag A Risk</a>
+                                                        href="javascript:void(0)" data-toggle="modal" onclick="editepicflag({{$e->id}},'{{$e->flag_type}}','{{$e->flag_title}}','{{$e->flag_description}}','{{$initiative->id}}','{{$key->id}}','{{$obj->id}}')" data-target="#edit-epic-flag">Flag A Risk</a>
 
                                                 </div>
                                             </div>
@@ -1141,6 +1140,7 @@ $var_objective = 'PageV-'.$type;
             <div class="modal-body">
                 <form class="needs-validation" action="#" method="POST" novalidate>
                 @csrf
+                <input type="hidden" value="{{ $organization->id }}" id="buisness_unit_id">
                 <input type="hidden" id="ini_epic_id_month">
                 <input type="hidden" id="epic_obj_month">
                 <input type="hidden" id="epic_key_month">

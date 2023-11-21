@@ -811,6 +811,7 @@
                 <input type="hidden" id="edit_ini_epic_id">
                 <input type="hidden" id="edit_epic_obj">
                 <input type="hidden" id="edit_epic_key">
+                <input type="hidden" id="edit_buisness_unit_id">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">

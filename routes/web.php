@@ -195,5 +195,7 @@ Route::get('Updatejira', [App\Http\Controllers\JiraController::class,'UpdateBuji
 Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flags')->group(function () {
     Route::get('{organizationid}/{flagtype}', 'FlagController@flags');
     Route::POST('change-flag-status', 'FlagController@changestatus');
-
+    Route::POST('getflagmodal', 'FlagController@getflagmodal');
+    Route::POST('updateflag', 'FlagController@updateflag');
+    
 });

@@ -877,50 +877,38 @@ class ObjectiveController extends Controller
         
     }
     
-        public function UpdateEpic(Request $request)
+    public function UpdateEpic(Request $request)
     {
-
         $date = DB::table('epics')->where('id',$request->edit_epic_id)->first();
-        
         $monthName = Carbon::parse($request->edit_epic_end_date)->format('F');
-  
         $month = DB::table('quarter_month')->where('initiative_id',$request->edit_ini_epic_id)->where('month',$monthName)->first();
- 
         if($request->has('selectedOptions'))
         {
-          $team = $request->selectedOptions;  
+            $team = $request->selectedOptions;  
         }else
         {
-         $team = NULL;   
+            $team = NULL;   
         }
-        
         DB::table('epics')->where('id',$request->edit_epic_id)->update([
-
-        'epic_status' => $request->edit_epic_status,
-        'epic_name' => $request->edit_epic_name,
-        'epic_detail' => $request->edit_epic_description,
-        'epic_start_date' => $request->edit_epic_start_date,
-        'epic_end_date' => $request->edit_epic_end_date,
-        'user_id' => Auth::id(),
-         'month_id' => $month->id, 
-         'team_id' => $team,
-
-
+            'epic_status' => $request->edit_epic_status,
+            'epic_name' => $request->edit_epic_name,
+            'epic_detail' => $request->edit_epic_description,
+            'epic_start_date' => $request->edit_epic_start_date,
+            'epic_end_date' => $request->edit_epic_end_date,
+            'user_id' => Auth::id(),
+            'month_id' => $month->id, 
+            'team_id' => $team,
+            'buisness_unit_id'=>$request->edit_buisness_unit_id,
         ]);
-     
-     if($request->edit_epic_status == 'Done')
-     {
-      DB::table('epics')->where('id',$request->edit_epic_id)->update([
-          'epic_progress' => 100,
-          'updated_at' => Carbon::now(),
-          
-          ]);
-     }
-     
-    DB::table('epics_stroy')->where('epic_id',$request->edit_epic_id)->update(['progress' => 100]);
-      
-      $epicid = DB::table('epics')->where('id',$request->edit_epic_id)->first();
-     
+        if($request->edit_epic_status == 'Done')
+        {
+            DB::table('epics')->where('id',$request->edit_epic_id)->update([
+                'epic_progress' => 100,
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+        DB::table('epics_stroy')->where('epic_id',$request->edit_epic_id)->update(['progress' => 100]);
+        $epicid = DB::table('epics')->where('id',$request->edit_epic_id)->first();
         $currentDate = Carbon::now();
         $currentYear = $currentDate->year;
         $currentMonth = $currentDate->month;
@@ -929,60 +917,41 @@ class ObjectiveController extends Controller
         $CurrentQuarter = '';
         $QuarterCount = '';
         $CurrentQuarter = DB::table('quarter_month')->where('initiative_id',$request->edit_ini_epic_id)->where('month',$yearMonth)->where('year',$yearMonthString)->first();
-
-     
-     
-    $Quarter = DB::table('epics')->where('id',$request->edit_epic_id)->first();
-    if($CurrentQuarter)
-    {
-    $QuarterCount = DB::table('epics')->where('quarter_id',$CurrentQuarter->quarter_id)->where('trash',NULL)->count();
-    $Quarterprogress  = DB::table('epics')->where('quarter_id',$CurrentQuarter->quarter_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
-    }
-    if($QuarterCount > 0)
-    {
-    $Quartertotal = round(($Quarterprogress / $QuarterCount * 100),2);
-    DB::table('quarter')->where('id',$CurrentQuarter->quarter_id)->update(['quarter_progress' => $Quartertotal]);
-    DB::table('initiative')->where('id',$CurrentQuarter->initiative_id)->update(['q_initiative_prog' => $Quartertotal]);
-
-    
-    }
-     
-   $initcount = DB::table('initiative')->where('key_id',$request->edit_epic_key)->sum('initiative_weight');
-
-    if($initcount == 100)
-    {
-    $epic = DB::table('epics')->where('id',$epicid->id)->where('trash',NULL)->first();
-
-    $epicinitiativecount = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('trash',NULL)->count();
-    $initiativeprogress  = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
-    $totalinitiative =  ($initiativeprogress/$epicinitiativecount); 
-    $finaltotal =  ($totalinitiative * 100); 
-    
-     $intw = DB::table('initiative')->where('id',$epic->initiative_id)->first();
-     $resultinit = ($intw->initiative_weight / 100);
-     $newresultinit = round(($resultinit * $finaltotal),2);
-     DB::table('initiative')->where('id',$epic->initiative_id)->update(['initiative_prog' => $newresultinit]);
-
-    }else
-    {
-        
-    $epic = DB::table('epics')->where('id',$request->edit_epic_id)->first();
-    $epicinitiativecount = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('trash',NULL)->count();
-    $initiativeprogress  = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
-    $totalinitiative =  ($initiativeprogress/$epicinitiativecount); 
-    $finaltotal =  ($totalinitiative * 100);
-    
-    DB::table('initiative')->where('id',$epic->initiative_id)->update(['initiative_prog' => $finaltotal]);
-    
-
-
-        
-    }
-
-      
-  
-    
-      $objwcount = DB::table('key_result')->where('obj_id',$request->edit_epic_obj)->sum('weight');
+        $Quarter = DB::table('epics')->where('id',$request->edit_epic_id)->first();
+        if($CurrentQuarter)
+        {
+        $QuarterCount = DB::table('epics')->where('quarter_id',$CurrentQuarter->quarter_id)->where('trash',NULL)->count();
+        $Quarterprogress  = DB::table('epics')->where('quarter_id',$CurrentQuarter->quarter_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
+        }
+        if($QuarterCount > 0)
+        {
+        $Quartertotal = round(($Quarterprogress / $QuarterCount * 100),2);
+            DB::table('quarter')->where('id',$CurrentQuarter->quarter_id)->update(['quarter_progress' => $Quartertotal]);
+            DB::table('initiative')->where('id',$CurrentQuarter->initiative_id)->update(['q_initiative_prog' => $Quartertotal]);
+        }
+        $initcount = DB::table('initiative')->where('key_id',$request->edit_epic_key)->sum('initiative_weight');
+        if($initcount == 100)
+        {
+            $epic = DB::table('epics')->where('id',$epicid->id)->where('trash',NULL)->first();
+            $epicinitiativecount = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('trash',NULL)->count();
+            $initiativeprogress  = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
+            $totalinitiative =  ($initiativeprogress/$epicinitiativecount); 
+            $finaltotal =  ($totalinitiative * 100);
+            $intw = DB::table('initiative')->where('id',$epic->initiative_id)->first();
+            $resultinit = ($intw->initiative_weight / 100);
+            $newresultinit = round(($resultinit * $finaltotal),2);
+            DB::table('initiative')->where('id',$epic->initiative_id)->update(['initiative_prog' => $newresultinit]);
+        }
+        else
+        {   
+            $epic = DB::table('epics')->where('id',$request->edit_epic_id)->first();
+            $epicinitiativecount = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('trash',NULL)->count();
+            $initiativeprogress  = DB::table('epics')->where('initiative_id',$epic->initiative_id)->where('epic_progress','=',100)->where('trash',NULL)->count();
+            $totalinitiative =  ($initiativeprogress/$epicinitiativecount); 
+            $finaltotal =  ($totalinitiative * 100);
+            DB::table('initiative')->where('id',$epic->initiative_id)->update(['initiative_prog' => $finaltotal]); 
+        }
+        $objwcount = DB::table('key_result')->where('obj_id',$request->edit_epic_obj)->sum('weight');
   
      
      if($objwcount == 100)
@@ -2243,7 +2212,7 @@ class ObjectiveController extends Controller
         'obj_id' => $request->epic_obj,
         'team_id' => $team,
         'key_id' => $request->epic_key,
-        
+        'buisness_unit_id' => $request->buisness_unit_id,
 
         ]);
         
