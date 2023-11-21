@@ -206,7 +206,7 @@ class Jira
     
     }
     
-      public function UpdateEpicjira()
+      public static function UpdateEpicjira()
     {
 
      

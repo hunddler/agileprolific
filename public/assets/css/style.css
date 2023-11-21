@@ -19295,14 +19295,12 @@ option {
     margin-bottom: 0px !important;
 }
 
-.header-objective .content-item
-{
+.header-objective .content-item {
     width: 20%;
     margin: 0px auto !important;
 }
 
-.header-objective .action
-{
+.header-objective .action {
     width: 10%;
     text-align: right;
 }
@@ -19339,7 +19337,7 @@ option {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin:0px auto;
+    margin: 0px auto;
 }
 
 .success {
@@ -19412,8 +19410,8 @@ option {
     padding: 2px 24px !important;
     border: 13px !important;
     box-shadow: none !important;
-    border-bottom-right-radius:10px !important;
-    border-bottom-left-radius:10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
 }
 
 .bg-white {
@@ -19482,8 +19480,8 @@ option {
     border: 13px !important;
     box-shadow: none !important;
     background-color: #F3F3F3 !important;
-    border-bottom-right-radius:10px !important;
-    border-bottom-left-radius:10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
 }
 
 
@@ -19553,9 +19551,9 @@ option {
     line-height: 21px !important;
     color: #000;
 }
-.border-radius
-{
-    border-radius: 12px !important  ;
+
+.border-radius {
+    border-radius: 12px !important;
 }
 
 .card-epic .content {
@@ -19574,31 +19572,26 @@ option {
     line-height: normal;
 }
 
-.progress
-{
+.progress {
     background: #e9ecef !important;
-    margin:0px !important;
+    margin: 0px !important;
     height: 4px;
 }
 
-.progress-bar
-{
+.progress-bar {
     background: #3661EC;
 }
 
-.dropdown-toggle::after
-{
+.dropdown-toggle::after {
     display: none !important;
 }
 
-.dropdown-menu
-{
+.dropdown-menu {
     padding: 8px;
     border-radius: 10px !important;
 }
 
-.dropdown-menu .dropdown-item
-{
+.dropdown-menu .dropdown-item {
     font-size: 13px;
     color: black;
 }
@@ -19861,163 +19854,175 @@ option {
 .section-scroll {
     flex: 0 0 80%;
     margin-right: 20px;
-    
+
 }
 
 
-.zoom-btn-section
-{
-    position: absolute; bottom: 10px; right: 10px; z-index: 1;
+.zoom-btn-section {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
 }
 
 
 
 #kanban {
-  float: left;
-  position: relative;
-  width: 100%;
-  ax-width: 100%;
-  height: auto;
+    float: left;
+    position: relative;
+    width: 100%;
+    ax-width: 100%;
+    height: auto;
 }
+
 #scroller {
-  float: left;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  overflow: auto;
+    float: left;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    overflow: auto;
 }
+
 #boards {
-  float: left;
-  position: relative;
-  width: auto;
-  height: auto;
-  margin-bottom: 30px;
+    float: left;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin-bottom: 30px;
 }
 
 .board {
-  float: left;
-  position: relative;
-  width: 300px;
-  min-height: 100vh;
-  margin: 8px;
-  border-right: 1px solid lightgray;
+    float: left;
+    position: relative;
+    width: 300px;
+    min-height: 100vh;
+    margin: 8px;
+    border-right: 1px solid lightgray;
 
 }
+
 .board header {
 
-text-align: center;
-  width: 100%;
-  padding: 0.5em;
-  text-transform: capitalize;
-  border-radius: 3px 3px 0 0;
+    text-align: center;
+    width: 100%;
+    padding: 0.5em;
+    text-transform: capitalize;
+    border-radius: 3px 3px 0 0;
 }
 
 #board1 header {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  color: black;
-  text-transform: capitalize;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: black;
+    text-transform: capitalize;
     text-align: center;
 }
+
 #board2 header {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
-  line-height: normal;
-  color: black;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: normal;
+    color: black;
     text-align: center;
 }
+
 #board3 header {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: capitalize;
-  color: black;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    color: black;
     text-align: center;
 }
 
 .cards {
-  list-style-type: none;
-  float: left;
-  width: 100%;
-  padding: 14px;
+    list-style-type: none;
+    float: left;
+    width: 100%;
+    padding: 14px;
 }
+
 .card {
-  float: left;
-  width: 100%;
-  height: auto;
+    float: left;
+    width: 100%;
+    height: auto;
 }
+
 .cardtitle {
-  float: left;
-  width: 100%;
+    float: left;
+    width: 100%;
 }
+
 .cards .is-moving {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .gu-mirror {
-  cursor: move;
-  cursor: -webkit-grabbing;
-  cursor: -moz-grabbing;
-  cursor: grabbing;
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  opacity: 1;
-  -webkit-transform: rotate(5deg);
-  transform: rotate(5deg);
+    cursor: move;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 1;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
 }
+
 .gu-hide {
-  display: none !important;
+    display: none !important;
 }
+
 .gu-unselectable {
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
+
 .gu-transit {
-  opacity: 0.4;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
-  filter: alpha(opacity=20);
+    opacity: 0.4;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
 }
 
 
 /*Performance Dashboard*/
 
-.chart-header .title
-{
+.chart-header .title {
     font-size: 19px;
     font-style: normal;
     font-weight: 500;
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
-.chart-header .subtitle
-{
+
+.chart-header .subtitle {
     color: #717171;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
-.stats-section b
-{
+
+.stats-section b {
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
@@ -20025,8 +20030,7 @@ text-align: center;
     text-transform: capitalize;
 }
 
-.stats-section small
-{
+.stats-section small {
     color: #717171;
     font-family: BR Candor;
     font-size: 12px;
@@ -20034,44 +20038,46 @@ text-align: center;
     font-weight: 400;
     line-height: normal;
 }
-.w-30
-{
+
+.w-30 {
     width: 30% !important;
 }
+
 .circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%; / Make it a circle /
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;/ Make it a circle /
 }
-.red
-{
-    background-color: #FF5733; / Circle color /
+
+.red {
+    background-color: #FF5733;/ Circle color /
 }
-.green
-{
-    background-color: #49D518; / Circle color /
+
+.green {
+    background-color: #49D518;/ Circle color /
 }
-.amber
-{
-    background-color: #EED250; / Circle color /
+
+.amber {
+    background-color: #EED250;/ Circle color /
 }
-.card-footer
-{
+
+.card-footer {
     border-top: none;
     background-color: transparent !important;
 }
-.dropdown-menu
-{
-    border:none !important;
+
+.dropdown-menu {
+    border: none !important;
     border-radius: var(--roundness, 10px);
     box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.10);
     padding: 15px;
 }
-.dropdown-item
-{
+
+.dropdown-item {
     padding: .45rem 1rem;
     border-radius: 100px;
 }
+
 .badge {
     padding: 8px 15px !important;
     font-size: 13px !important;
@@ -20085,8 +20091,7 @@ text-align: center;
     / Adjust the radius value as needed /
 }
 
-.org-sidebar
-{
+.org-sidebar {
     padding: 10px;
 }
 
@@ -20106,8 +20111,7 @@ text-align: center;
     line-height: normal;
 }
 
-.org-sidebar .org-detail .org-number
-{
+.org-sidebar .org-detail .org-number {
     color: #717171;
     font-size: 16px;
     font-style: normal;
@@ -20116,13 +20120,11 @@ text-align: center;
     text-transform: capitalize;
 }
 
-.org-sidebar .detail p
-{
+.org-sidebar .detail p {
     font-size: 15px;
 }
 
-.org-sidebar .nav .nav-link
-{
+.org-sidebar .nav .nav-link {
     border-radius: 100px;
     color: black;
     padding: 12px 18px;
@@ -20130,21 +20132,18 @@ text-align: center;
     align-items: center;
 }
 
-.org-sidebar .nav .nav-link:hover
-{
+.org-sidebar .nav .nav-link:hover {
     background: #f1f1f1;
 }
 
-.btn-default
-{
+.btn-default {
     background: #f1f1f1 !important;
     border-radius: 100px;
     font-size: 14px;
     padding: 8px 20px;
 }
 
-.btn
-{
+.btn {
     border-radius: 100px !important;
     font-size: 14px !important;
     padding: 8px 20px !important;
@@ -20180,21 +20179,16 @@ input[type="checkbox"]:checked {
     background-color: #3661EC;
 }
 
-/ Checkmark for Checked State /
-input[type="checkbox"]:checked::before {
-    content: "\2713"; / Unicode checkmark character /
-    position: absolute;
+/ Checkmark for Checked State / input[type="checkbox"]:checked::before {
+    content: "\2713";/ Unicode checkmark character / position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white; / Color of the checkmark /
-    font-size: 16px; / Size of the checkmark /
-    font-weight: bold; / Bold checkmark /
+    color: white;/ Color of the checkmark / font-size: 16px;/ Size of the checkmark / font-weight: bold;/ Bold checkmark /
 }
 
 
-/ Material Design Radio Button Styles /
-input[type="radio"] {
+/ Material Design Radio Button Styles / input[type="radio"] {
     width: 24px;
     height: 24px;
     position: relative;
@@ -20205,32 +20199,28 @@ input[type="radio"] {
     border-radius: 50%;
     outline: none;
     cursor: pointer;
-    padding: 4px; / Add padding to create negative space around the circle /
+    padding: 4px;/ Add padding to create negative space around the circle /
 }
 
 input[type="radio"]:checked {
     background-color: #3661EC;
 }
 
-.b-unit-tabs .nav-link
-{
+.b-unit-tabs .nav-link {
     font-size: 14px !important;
     padding: .6rem 1.5rem !important;
 }
 
-.member-area
-{
+.member-area {
     height: 200px;
     overflow-y: auto;
 }
 
-.member-area .single-member
-{
+.member-area .single-member {
     margin-bottom: 15px;
 }
 
-.member-area .single-member p
-{
+.member-area .single-member p {
     color: var(--Black-Color, #000);
     font-size: 15px;
     font-style: normal;
@@ -20239,27 +20229,23 @@ input[type="radio"]:checked {
     line-height: normal;
 }
 
-.member-area .single-member small
-{
+.member-area .single-member small {
     color: #717171;
-    / X - Small /
-    font-family: BR Candor;
+    / X - Small / font-family: BR Candor;
     font-size: 12px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
 }
 
-.input-sm
-{
+.input-sm {
     height: 40px;
     border-radius: 100px !important;
     font-size: 13px;
 }
 
 
-.backlog-item
-{
+.backlog-item {
     display: flex;
     width: 100%;
     height: 58.622px;
@@ -20275,18 +20261,15 @@ input[type="radio"]:checked {
     font-weight: 400;
     line-height: normal;
     margin-bottom: 10px;
-    overflow: hidden;      / Hide overflow text /
-  white-space: nowrap;   / Prevent text from wrapping /
-  text-overflow: ellipsis; / Display ellipsis (...) for overflow text /
+    overflow: hidden;/ Hide overflow text / white-space: nowrap;/ Prevent text from wrapping / text-overflow: ellipsis;/ Display ellipsis (...) for overflow text /
 }
 
-.backlog-item .sub-item
-{
+.backlog-item .sub-item {
     width: 16.66% !important;
     text-align: center;
     overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 
@@ -20296,13 +20279,11 @@ input[type="radio"]:checked {
 {
     padding: 0px !important;
 }*/
-.modal-content
-{
+.modal-content {
     border-radius: 13px;
 }
 
-.btn-primary
-{
+.btn-primary {
     border-radius: 54px;
     height: 43px;
     border: 1px solid #3661EC;
@@ -20316,23 +20297,21 @@ input[type="radio"]:checked {
     box-shadow: 0px 9px 37px 0px rgba(84, 122, 255, 0.37);
 }
 
-.btn-default
-{
+.btn-default {
     border-radius: 54px;
     height: 43px;
     border: 1px solid #3661EC;
     background: var(--primary-color, #f8f9fa);
     font-size: 13px;
     font-style: normal;
-    border:none !important;
+    border: none !important;
     font-weight: 500;
     min-width: 100px;
     line-height: normal;
     color: black;
 }
 
-.modal-footer
-{
+.modal-footer {
     border-top: 0px !important;
     padding-top: 0px !important;
     padding-bottom: 0px !important;
@@ -20341,24 +20320,24 @@ input[type="radio"]:checked {
 
 /* Custom CSS to increase radio box size */
 .form-check-input[type="radio"] {
-    width: 25px; /* Adjust the width as needed */
-    height: 25px; /* Adjust the height as needed */
+    width: 25px;
+    /* Adjust the width as needed */
+    height: 25px;
+    /* Adjust the height as needed */
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.previous, .dataTables_wrapper .dataTables_paginate .paginate_button.next
-{
-        padding: 1px !important;
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+.dataTables_wrapper .dataTables_paginate .paginate_button.next {
+    padding: 1px !important;
 }
 
-.dataTables_wrapper .pagination .page-item .page-link
-{
+.dataTables_wrapper .pagination .page-item .page-link {
     font-size: 13px !important;
 }
 
 
 
-.w-96
-{
+.w-96 {
     width: 96% !important;
 }
 
@@ -20390,7 +20369,7 @@ input[type="radio"]:checked {
     left: 0;
 }
 
-.custom-progress > span {
+.custom-progress>span {
     width: 50%;
     height: 100%;
     overflow: hidden;
@@ -20544,6 +20523,7 @@ input[type="radio"]:checked {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(36deg);
         transform: rotate(36deg);
@@ -20555,6 +20535,7 @@ input[type="radio"]:checked {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(72deg);
         transform: rotate(72deg);
@@ -20566,6 +20547,7 @@ input[type="radio"]:checked {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(108deg);
         transform: rotate(108deg);
@@ -20577,6 +20559,7 @@ input[type="radio"]:checked {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(144deg);
         transform: rotate(144deg);
@@ -20588,21 +20571,20 @@ input[type="radio"]:checked {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
 }
 
-.report-card .report-header
-{
+.report-card .report-header {
     padding: 10px 0px 0px 0px;
     border-bottom: 1px solid var(--Border, #EFEFEF);
 
 }
 
-.report-card .report-header h4
-{
+.report-card .report-header h4 {
     color: var(--Black-Color, #000);
     font-family: BR Candor;
     font-size: 15px;
@@ -20611,36 +20593,31 @@ input[type="radio"]:checked {
     line-height: normal;
 }
 
-.report-card .table thead td
-{
+.report-card .table thead td {
     padding-bottom: 15px;
     text-transform: capitalize;
     font-weight: 500;
     padding-left: 0px !important;
 }
-.report-card .table tbody td
-{
+
+.report-card .table tbody td {
     padding: 10px 0px;
 }
 
-.key-result-cell
-{
+.key-result-cell {
     width: 50%;
 }
 
-.key-result-cell a
-{
+.key-result-cell a {
     text-decoration: none;
     color: black;
 }
 
-.cell-20-percent
-{
+.cell-20-percent {
     width: 20%;
 }
 
-.cell-30-percent
-{
+.cell-30-percent {
     width: 30%;
 }
 
@@ -20648,17 +20625,16 @@ input[type="radio"]:checked {
     background-color: white !important;
 }
 
-.chart-header .title-area
-{
-    padding-bottom:10px; border-bottom:1px solid #f2f2f2;
+.chart-header .title-area {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f2f2f2;
 }
 
-.chart-header .target-area
-{
-    padding-bottom:10px;
+.chart-header .target-area {
+    padding-bottom: 10px;
 }
-.badge-cs-small
-{
+
+.badge-cs-small {
     display: flex;
     height: 27px;
     padding: 3px 20px;
@@ -20676,24 +20652,21 @@ input[type="radio"]:checked {
     margin: 0px auto;
 }
 
-.card-epic .card-footer
-{
-    border-radius:10px !important;
+.card-epic .card-footer {
+    border-radius: 10px !important;
 }
-.lable-bottom-imp
-{
+
+.lable-bottom-imp {
     bottom: 72px !important;
 }
 
-.border-bottom-radius
-{
-    border-top-right-radius:10px !important;
-    border-top-left-radius:10px !important;
+.border-bottom-radius {
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
 }
 
-.border-top-1px
-{
-    border-top:1px solid #EFEFEF !important;
+.border-top-1px {
+    border-top: 1px solid #EFEFEF !important;
 }
 
 
@@ -20701,15 +20674,13 @@ input[type="radio"]:checked {
 
 /*Reports module*/
 
-.report-card .report-header
-{
+.report-card .report-header {
     padding: 10px 0px 0px 0px;
     border-bottom: 1px solid var(--Border, #EFEFEF);
 
 }
 
-.report-card .report-header h4
-{
+.report-card .report-header h4 {
     color: var(--Black-Color, #000);
     font-family: BR Candor;
     font-size: 15px;
@@ -20718,25 +20689,22 @@ input[type="radio"]:checked {
     line-height: normal;
 }
 
-.report-card .table thead td
-{
+.report-card .table thead td {
     padding-bottom: 15px;
     text-transform: capitalize;
     font-weight: 500;
     padding-left: 0px !important;
 }
-.report-card .table tbody td
-{
+
+.report-card .table tbody td {
     padding: 10px 0px;
 }
 
-.key-result-cell
-{
+.key-result-cell {
     width: 50%;
 }
 
-.key-result-cell a
-{
+.key-result-cell a {
     text-decoration: none;
     color: black;
 }
@@ -20744,13 +20712,11 @@ input[type="radio"]:checked {
 
 /*Report 2*/
 
-.cell-20-percent
-{
+.cell-20-percent {
     width: 20%;
 }
 
-.cell-30-percent
-{
+.cell-30-percent {
     width: 30%;
 }
 
@@ -20762,39 +20728,33 @@ input[type="radio"]:checked {
 
 /*Reports Parent Card*/
 
-.report-parent-card .card-body
-{
+.report-parent-card .card-body {
     padding: 16px !important;
 }
 
-.report-parent-card img
-{
+.report-parent-card img {
     width: 70px;
 }
-.report-parent-card .content-area
-{
+
+.report-parent-card .content-area {
     width: 50%;
 }
 
-.report-parent-card a h4
-{
+.report-parent-card a h4 {
     font-size: 18px;
     line-height: 10px;
 }
 
-.report-parent-card p
-{
+.report-parent-card p {
     font-size: 13px;
     margin-bottom: 0px;
 }
 
-.report-parent-card button
-{
+.report-parent-card button {
     font-size: 13px;
 }
 
-.report-parent-card button:hover
-{
+.report-parent-card button:hover {
     background-color: #3699ff !important;
     color: white !important;
 }
@@ -20810,13 +20770,19 @@ input[type="radio"]:checked {
     left: 50%;
     /* Position it in the middle of the Kanban board */
 }
+
+
+
+
+/*impediment Board*/
+
+
 .kanban-header {
-  cursor: pointer;
-  margin-bottom: 14px;
+    cursor: pointer;
+    margin-bottom: 14px;
 }
 
-.kanban-header h4
-{
+.kanban-header h4 {
     color: var(--Black, #000);
     font-size: 17px;
     font-style: normal;
@@ -20826,8 +20792,7 @@ input[type="radio"]:checked {
     text-transform: capitalize;
 }
 
-.kanban-header small
-{
+.kanban-header small {
     color: var(--Ligh-text, #A7A7A7);
     font-size: 12.552px;
     font-style: normal;
@@ -20836,48 +20801,45 @@ input[type="radio"]:checked {
 }
 
 .kanban-search-bar {
-  display: none;
-  margin-bottom: 10px;
+    display: none;
+    margin-bottom: 10px;
 }
 
 .kanban-search-bar input {
-  width: 100%;
-  box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .kanban-search-bar-expanded {
-  display: block;
+    display: block;
 }
 
 .kanban-content {
-  min-height: 100px;
+    min-height: 100px;
 }
 
 .kanban-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-  cursor: move;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    cursor: move;
 }
 
-.impediment-card
-{
+.impediment-card {
     padding: 12px 15px;
     border-radius: 15px;
     margin-bottom: 15px;
     cursor: pointer;
 }
 
-.impediment-card h5
-{
+.impediment-card h5 {
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
-.impediment-card p
-{
+.impediment-card p {
     color: var(--Ligh-text, #A7A7A7);
     font-size: 12.552px;
     font-style: normal;
@@ -20885,8 +20847,7 @@ input[type="radio"]:checked {
     line-height: normal;
 }
 
-.impediment-card a
-{
+.impediment-card a {
     color: var(--Primary, #547AFF);
     font-size: 12.552px;
     font-style: normal;
@@ -20894,28 +20855,101 @@ input[type="radio"]:checked {
     line-height: normal;
 
 }
-.impediment-card .image-cont
-{
+
+.impediment-card .image-cont {
     font-size: 12px;
 }
-.vertical-line {
-        border-left: 2px solid #f3f3f3; /* Adjust width and color as needed */
-        height: 20px; /* Adjust height as needed */
 
-    }
-.impediment-card .image-cont img
-{
+.vertical-line {
+    border-left: 2px solid #f3f3f3;
+    /* Adjust width and color as needed */
+    height: 20px;
+    /* Adjust height as needed */
+
+}
+
+.impediment-card .image-cont img {
     width: 31px;
     height: 31px;
     object-fit: cover;
     background-size: cover;
     border-radius: 1000px;
 }
-.un-blocked
-{
+
+.un-blocked {
     color: var(--Black, #000);
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
+    line-height: normal;
+}
+
+
+
+
+
+.btn-sm {
+    height: 35px !important;
+    min-width: 90px !important;
+    font-size: 12px !important;
+}
+
+.comment-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.comment-header h4 {
+    color: var(--Black-Color, #000);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.comment-area {
+    overflow-y: scroll;
+    max-height: 200px;
+    padding-top: 10px;
+}
+
+.comment-card {
+    box-shadow: none;
+    border: 1px solid #EFEFEF !important;
+    margin: 10px 0px;
+
+
+}
+
+.comment-card .user-image {
+    width: 41px;
+    height: 41px;
+    object-fit: cover;
+    background-size: cover;
+    border-radius: 1000px;
+}
+
+
+.comment-card h5 {
+    color: var(--Black, #000);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 0px;
+}
+
+
+.comment-card small {
+    color: var(--Light-Gray, #787878);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.comment-card p {
+    color: var(--Ligh-text, #A7A7A7);
+    font-size: 13px;
     line-height: normal;
 }
