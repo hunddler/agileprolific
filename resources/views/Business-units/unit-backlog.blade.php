@@ -658,7 +658,7 @@ $var_objective = "Backlog-Unit";
    
        $('.category').on('change', function() {
         var id = $(this).val();
-   
+        var type = "{{$organization->type}}";
         if(id) {
         $.ajax({
         type: "GET",
@@ -668,6 +668,7 @@ $var_objective = "Backlog-Unit";
         },
         data: {
         id:id,
+        type:type,
         },
         success: function(res) {
           

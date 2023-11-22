@@ -1,5 +1,5 @@
 @php
-$sprint = DB::table('sprint')->where('user_id',Auth::id())->where('status',NULL)->count();
+$sprint = DB::table('sprint')->where('user_id',Auth::id())->where('value_unit_id',$organization->id)->where('status',NULL)->count();
 @endphp
 <style>
     

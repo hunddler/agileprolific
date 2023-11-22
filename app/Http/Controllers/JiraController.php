@@ -179,6 +179,15 @@ class JiraController extends Controller
            $counter = $data->position; 
            }
            }
+
+           if($request->type == 'BU' || $request->type == 'VS')
+           {
+           $data = DB::table('team_backlog')->orderby('id','DESC')->where('user_id',Auth::id())->first();
+            if($data)
+            {
+            $counter = $data->position; 
+            }
+            }
           
           foreach($backlog as $log)
           {
@@ -218,6 +227,28 @@ class JiraController extends Controller
                 'user_id' => Auth::id(),
                  'position' => $counter,
                  'account_id' => $log->account_id, 
+
+
+
+                ]);
+                }
+
+                if($request->type == 'BU' || $request->type == 'VS')
+                {
+                 DB::table('team_backlog')->insert([
+                'epic_status' => $log->E_Status,
+                'epic_title' => $log->Summary,
+                'epic_detail' => $log->detail,
+                'epic_start_date' => $log->Startdate,
+                'epic_end_date' => $log->Duedate,
+                'jira_id' => $log->jira_id,
+                'progress' => $log->progress,
+                'unit_id' => $request->backlog_id,
+                'jira_project' => $request->jira_project,
+                'user_id' => Auth::id(),
+                 'position' => $counter,
+                 'account_id' => $log->account_id,
+                 'type' => $request->type,  
 
 
 

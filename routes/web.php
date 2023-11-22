@@ -167,6 +167,7 @@ Route::post('add-backlog-epic', [App\Http\Controllers\MemberController::class,'S
 Route::get('get-value-obj', [App\Http\Controllers\MemberController::class,'GetBacklogObj']);
 Route::get('get-value-key', [App\Http\Controllers\MemberController::class,'GetBacklogKey']);
 Route::get('get-value-init', [App\Http\Controllers\MemberController::class,'GetBacklogInit']);
+
 Route::post('update-backlog-epic', [App\Http\Controllers\MemberController::class,'UpdateBacklogEpic']);
 Route::post('delete-stream-backlog', [App\Http\Controllers\MemberController::class,'DeleteStreamBacklogEpic']);
 
@@ -188,8 +189,16 @@ Route::post('delete-jira-account', [App\Http\Controllers\JiraController::class,'
 Route::get('get-jira-project', [App\Http\Controllers\JiraController::class,'JiraProject']);
 
 Route::get('get-month', [App\Http\Controllers\MemberController::class,'GetMonth']);
-
 Route::get('Updatejira', [App\Http\Controllers\JiraController::class,'UpdateBujira']);
+
+//BackLogTeam
+Route::get('dashboard/organization/{id}/BT-Backlog/{type}', [App\Http\Controllers\TeamController::class, 'TeamBacklog'])->middleware('auth');
+Route::post('add-teambacklog-epic', [App\Http\Controllers\TeamController::class,'SaveTeamBacklogEpic']);
+Route::post('assign-teambacklog-epic', [App\Http\Controllers\TeamController::class,'AssignTeamBacklogEpic']);
+Route::post('update-teambacklog-epic', [App\Http\Controllers\TeamController::class,'UpdateTeamBacklogEpic']);
+Route::post('delete-team-backlog', [App\Http\Controllers\TeamController::class,'DeleteTeamBacklogEpic']);
+
+
 
 
 Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flags')->group(function () {

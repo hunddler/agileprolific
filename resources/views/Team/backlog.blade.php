@@ -1,8 +1,17 @@
 @php
-$var_objective = "Backlog";
+if($type == 'BU')
+{
+$var_objective = 'TBaclog-'.$type;
+}
+
+if($type == 'VS')
+{
+$var_objective = 'TBaclog-'.$type;
+}
+
 @endphp
 @extends('components.main-layout')
-<title>Backlog-{{$organization->value_name}}</title>
+<title>Backlog-{{$organization->team_title}}</title>
 @section('content')
 <style>
 
@@ -19,13 +28,19 @@ $var_objective = "Backlog";
                 <!-- begin breadcrums -->
                 <!-- end breadcrums -->
                 <!-- begin page Content -->
-                <div class="container-fluid py-5 w-96" id="assign-epic">
+                <div class="container-fluid py-5 w-96" id="assign-epic-unit">
                     <div class="row">
                         <div class="col-md-12 p-0">
                             <div class="card">
                                 <div class="card-body p-10">
                                 
-                                   <table class="table data-table example" id="olddata">
+                                  @if (session('message'))
+                                  <div class="alert alert-success mt-1" role="alert">
+                                  {{ session('message') }}
+                                  </div>
+                                   @endif
+                                   
+                                       <table class="table data-table example" id="olddata">
                                                 <thead>
                                                     <tr>
                                                         <td>
@@ -43,17 +58,11 @@ $var_objective = "Backlog";
                                                     </tr>
                                                 </thead>
                                                 <tbody class="boards" id="backlog-board">
-
                                                     
-                                                    @if (session('message'))
-                                                      <div class="alert alert-success mt-1" role="alert">
-                                                          {{ session('message') }}
-                                                      </div>
-                                                       @endif
                                                        
                                                     @foreach($Backlog as $backlog)       
                                                     <tr id="backlog-{{$backlog->id}}">
-                                                        <td>
+                                                    <td>
                                                     <label class="form-checkbox">
                                                     <input type="checkbox" class="checkbox" value="{{$backlog->id}}">
                                                     <span class="checkbox-label"></span>
@@ -71,9 +80,9 @@ $var_objective = "Backlog";
                                                                         </clipPath>
                                                                     </defs>
                                                                 </svg>
-                                                          {{$backlog->epic_title}}
+                                                         {{$backlog->epic_title}}
                                                         </td>
-                                                         <td> 
+                                                        <td> 
                                                       
                                                         @if($backlog->assign_status == NULL)
                                                     
@@ -108,93 +117,108 @@ $var_objective = "Backlog";
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                            <form class="needs-validation" action="{{url('assign-backlog-epic')}}" method="POST">
+                                                            <form class="needs-validation" action="{{url('assign-teambacklog-epic')}}" method="POST">
                                                             @csrf   
                                                                
                                                                 <input type="hidden" name="backlog_id" value="{{$backlog->id}}">
+                                                                <input type="hidden" name="team_type" value="{{$organization->type}}">
                                                 
-                                                              <div class="row">
-                                                              <div class="col-md-12 col-lg-12 col-xl-12">
-                                                                <div class="form-group mb-0">
-                                                                   <select class="form-control category" id="" name="stream_obj" required>
-                                                                    <option value="" >Select Value Stream</option>
-                                                                    <?php foreach(DB::table('value_stream')->where('user_id',Auth::id())->get() as $r){ ?>
-                                                                      <option value="{{ $r->id }}">{{ $r->value_name }}</option>-->
-                                                                       <?php }  ?>
-                                    
-                                                                   </select>
-                                                                    <label for="small-description">Choose Value Stream</label>
-                                                                </div>
-                                                            </div>
+                                                                    <div class="row">
+                                                                        <!--<div class="col-md-12 col-lg-12 col-xl-12">-->
+                                                                        <!--    <div class="form-group mb-0">-->
+                                                                        <!--        <input type="text" class="form-control" name="epic_name" id="" required>-->
+                                                                        <!--        <label for="objective-name">Epic Title</label>-->
+                                                                        <!--    </div>-->
+                                                                        <!--</div>-->
+                                                                          @if($organization->type == 'BU')
+                                                                          <div class="col-md-12 col-lg-12 col-xl-12">
+                                                                            <div class="form-group mb-0">
+                                                                               <select class="form-control category" id="" name="stream_obj" required>
+                                                                                <option value="" >Select Business Team</option>
+                                                                                <?php foreach(DB::table('unit_team')->where('org_id',$organization->org_id)->get() as $r){ ?>
+                                                                                  <option value="{{ $r->id }}">{{ $r->team_title }}</option>
+                                                                                   <?php }  ?>
                                                 
-                                                 <div class="col-md-12 col-lg-12 col-xl-12">
-                                                    <div class="form-group mb-0">
-                                                     <select name="locstate" id="" onchange="getvaluekey(this.value)"  class="form-control obj" value="" required>
-                                                                            
-                                                    </select>
-                                                        <label for="small-description">Choose Objective</label>
-                                                    </div>
-                                                </div>
-                                                
-                                                      <div class="col-md-12 col-lg-12 col-xl-12">
-                                                    <div class="form-group mb-0">
-                                                     <select name="lockey" id="" onchange="getvalueintit(this.value)"  class="form-control key" value="" required>
-                                                                            
-                                                    </select>
-                                                        <label for="small-description">Choose Key Result</label>
-                                                    </div>
-                                                </div>
-                                                
-                                                  <div class="col-md-12 col-lg-12 col-xl-12">
-                                                    <div class="form-group mb-0">
-                                                     <select name="locinit" id="" class="form-control init"  value="" required>
-                                                                            
-                                                    </select>
-                                                        <label for="small-description" style="bottom:72px;">Choose Initiative</label>
-                                                    </div>
-                                                </div>
-                                                
-                                              
-                                                <div class="col-md-6 col-lg-6 col-xl-6">
-                                                    <div class="form-group mb-0">
-                                                        <input type="date" class="form-control" name="start_date[]" @if($backlog->epic_start_date) value="{{$backlog->epic_start_date}}" @else value="{{date('Y-m-d')}}" @endif required>
-                                                        <label for="start-date">Start Date</label>
-                                                    </div>
-                                                </div>
-                                                
-                                                  <div class="col-md-6 col-lg-6 col-xl-6">
-                                                    <div class="form-group mb-0">
-                                                        <input type="date" class="form-control" name="end_date[]"  @if($backlog->epic_end_date) value="{{$backlog->epic_end_date}}" @else value="{{date('Y-m-d')}}" @endif  required>
-                                                        <label for="start-date">End Date</label>
-                                                    </div>
-                                                </div>
-                                               @if($backlog->quarter != NULL)
-                                                                       
+                                                                               </select>
+                                                                                <label for="small-description">Choose Team</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        @endif
+
+                                                                        @if($organization->type == 'VS')
                                                                         <div class="col-md-12 col-lg-12 col-xl-12">
+                                                                          <div class="form-group mb-0">
+                                                                             <select class="form-control category" id="" name="stream_obj" required>
+                                                                              <option value="" >Select Value Team</option>
+                                                                              <?php foreach(DB::table('value_team')->where('org_id',$organization->org_id)->get() as $r){ ?>
+                                                                                <option value="{{ $r->id }}">{{ $r->team_title }}</option>
+                                                                                 <?php }  ?>
+                                              
+                                                                             </select>
+                                                                              <label for="small-description">Choose Team</label>
+                                                                          </div>
+                                                                      </div>
+                                                                      @endif
+
+                                                                             
+                                
+                                                                        
+                                                                         <div class="col-md-12 col-lg-12 col-xl-12">
+                                                                            <div class="form-group mb-0">
+                                                                             <select name="locstate" id="" onchange="getvaluekey(this.value)"  class="form-control obj" value="" required>
+                                                                                                    
+                                                                            </select>
+                                                                                <label for="small-description">Choose Objective</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                              <div class="col-md-12 col-lg-12 col-xl-12">
+                                                                            <div class="form-group mb-0">
+                                                                             <select name="lockey" id="" onchange="getvalueintit(this.value)"  class="form-control key" value="" required>
+                                                                                                    
+                                                                            </select>
+                                                                                <label for="small-description" >Choose Key Result</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                          <div class="col-md-12 col-lg-12 col-xl-12">
+                                                                            <div class="form-group mb-0">
+                                                                             <select name="locinit" id="" class="form-control init"   required>
+                                                                                                    
+                                                                            </select>
+                                                                                <label for="small-description" style="bottom:72px;">Choose initiative</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-lg-6 col-xl-6">
                                                                         <div class="form-group mb-0">
-                                                                            <input type="text" class="form-control"  name="" value="{{$backlog->quarter}}" >
-                                                                            <label for="start-date">Quarter</label>
+                                                                            <input type="date" class="form-control" name="start_date[]"  @if($backlog->epic_start_date) value="{{$backlog->epic_start_date}}" @else value="{{date('Y-m-d')}}"  @endif required>
+                                                                            <label for="start-date">Start Date</label>
                                                                         </div>
                                                                     </div>
-                                                       
-                                                                     @endif
                                                 
-                                                    <div class="col-md-12">
-                                                        <button class="btn btn-primary btn-lg btn-theme btn-block ripple mt-3"  type="submit">Add</button>
-                                                    </div>
-                                                </div>
+                                                                      <div class="col-md-6 col-lg-6 col-xl-6">
+                                                                        <div class="form-group mb-0">
+                                                                            <input type="date" class="form-control" name="end_date[]" @if($backlog->epic_end_date) value="{{$backlog->epic_end_date}}" @else value="{{date('Y-m-d')}}"  @endif required>
+                                                                            <label for="start-date">End Date</label>
+                                                                        </div>
+                                                                    </div>
+                                                              
+                                                                     
+                                                                        
+                                                                        <div class="col-md-12">
+                                                                            <button class="btn btn-primary btn-lg btn-theme btn-block ripple mt-3"  type="submit">Assign Epics</button>
+                                                                        </div>
+                                                                    </div>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @php
-                                                $startdate = json_decode($backlog->epic_start_date);
-                                                $enddate = json_decode($backlog->epic_end_date);
-                                                @endphp
+                                                         
+                                                     
                                                         <td> 
                                                         @if($backlog->epic_end_date != '')
-                                                       {{ \Carbon\Carbon::parse($backlog->epic_start_date)->format('M d')}}
+                                                      {{ \Carbon\Carbon::parse($backlog->epic_start_date)->format('M d')}}
                                                      
                                                         - {{ \Carbon\Carbon::parse($backlog->epic_end_date)->format('M d')}}
                                                     
@@ -238,7 +262,6 @@ $var_objective = "Backlog";
                                                             </button>
                                                         </td>
                                                     </tr>
-                                                    
                                                     <div class="modal fade" id="delete{{$backlog->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                       <div class="modal-content">
@@ -250,7 +273,7 @@ $var_objective = "Backlog";
                                                         </div>
                                                       
                                                 
-                                                        <form method="POST" action="{{url('delete-stream-backlog')}}">
+                                                        <form method="POST" action="{{url('delete-team-backlog')}}">
                                                          @csrf   
                                                          <input type="hidden" name="delete_id" value="{{$backlog->id}}">
                                                        
@@ -268,8 +291,7 @@ $var_objective = "Backlog";
                                                       </div>
                                                     </div>
                                                   </div>
-
-
+                                                    
                             <div class="modal fade" id="create{{$backlog->id}}" tabindex="-1" role="dialog" aria-labelledby="create-epic" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content" style="width: 526px !important;">
@@ -289,9 +311,10 @@ $var_objective = "Backlog";
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="needs-validation" action="{{url('update-backlog-epic')}}" method="POST" >
+                                        <form class="needs-validation" action="{{url('update-teambacklog-epic')}}" method="POST" >
                                         @csrf
                                             <input type="hidden" name="backlog_id" value="{{$backlog->id}}">
+                                            <input type="hidden" name="edit_team_type" value="{{$backlog->type}}">
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                                     <div class="form-group mb-0">
@@ -333,12 +356,15 @@ $var_objective = "Backlog";
                                                 <div class="form-group mb-0">
                                                 <select class="form-control" name ="team"  class="">
                                                 <option value="">Assign Team</option>
-                                                @foreach(DB::table('value_team')->where('org_id',$organization->id)->get() as $r)
+                                                @foreach(DB::table('unit_team')->where('org_id',$organization->id)->get() as $r)
                                                 <option value="{{$r->id}}">{{$r->team_title}}</option>
                                                 @endforeach
                                                 </select>
                                                 </div>
                                                 </div>
+                                                
+                                                
+                                                
                                         
                                                 
                                                 <div class="col-md-12">
@@ -357,9 +383,7 @@ $var_objective = "Backlog";
                                                     <!-- Add more rows as needed -->
                                                 </tbody>
                                             </table>
-                                
                                            
-                             
                                 </div>
                             </div>
                         </div>
@@ -370,7 +394,7 @@ $var_objective = "Backlog";
         </div>
     </div>
     
-  <div class="modal fade" id="create-backlog-epic" tabindex="-1" role="dialog" aria-labelledby="create-epic" aria-hidden="true">
+  <div class="modal fade" id="create-backlog-team" tabindex="-1" role="dialog" aria-labelledby="create-epic" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 526px !important;">
             <div class="modal-header">
@@ -389,10 +413,10 @@ $var_objective = "Backlog";
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="{{url('add-backlog-epic')}}" method="POST" >
+                <form class="needs-validation" action="{{url('add-teambacklog-epic')}}" method="POST" >
                 @csrf
-                <input type="hidden" name="Stream_id" value="{{$organization->id}}">
-      
+                <input type="hidden" name="unit_id" value="{{$organization->id}}">
+                <input type="hidden" name="type" value="{{$organization->type}}">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
@@ -457,7 +481,7 @@ $var_objective = "Backlog";
 </div>
 
 
-<div class="modal fade" id="assign-backlog-epic" tabindex="-1" role="dialog" aria-labelledby="create-epic" aria-hidden="true">
+<div class="modal fade" id="assign-Teambacklog-epic" tabindex="-1" role="dialog" aria-labelledby="create-epic" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 526px !important;">
             <div class="modal-header">
@@ -476,11 +500,11 @@ $var_objective = "Backlog";
                 </button>
             </div>
             <div class="modal-body">
-            <form class="needs-validation" action="{{url('assign-backlog-epic')}}" method="POST">
+            <form class="needs-validation" action="{{url('assign-teambacklog-epic')}}" method="POST">
             @csrf   
                
-                <input type="hidden" name="backlog_id" id="values">
-
+                <input type="hidden" name="backlog_id" id="backlog-id">
+                <input type="hidden" name="team_type" value="{{$organization->type}}">
                     <div class="row">
                         <!--<div class="col-md-12 col-lg-12 col-xl-12">-->
                         <!--    <div class="form-group mb-0">-->
@@ -489,19 +513,38 @@ $var_objective = "Backlog";
                         <!--    </div>-->
                         <!--</div>-->
                     
-                         <div class="col-md-12 col-lg-12 col-xl-12">
+                        @if($organization->type == 'BU')
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                          <div class="form-group mb-0">
+                             <select class="form-control category" id="" name="stream_obj" required>
+                              <option value="" >Select Business Team</option>
+                              <?php foreach(DB::table('unit_team')->where('org_id',$organization->org_id)->get() as $r){ ?>
+                                <option value="{{ $r->id }}">{{ $r->team_title }}</option>
+                                 <?php }  ?>
+
+                             </select>
+                              <label for="small-description">Choose Team</label>
+                          </div>
+                      </div>
+                      @endif
+
+                      @if($organization->type == 'VS')
+                      <div class="col-md-12 col-lg-12 col-xl-12">
                         <div class="form-group mb-0">
-                        <select class="form-control category" id="" name="stream_obj" required>
-                        <option value="" >Select Value Stream</option>
-                        <?php foreach(DB::table('value_stream')->where('user_id',Auth::id())->get() as $r){ ?>
-                        <option value="{{ $r->id }}">{{ $r->value_name }}</option>
-                        <?php }  ?>
-                        
-                        </select>
-                        <label for="small-description">Choose Value Stream</label>
+                           <select class="form-control category" id="" name="stream_obj" required>
+                            <option value="" >Select Value Team</option>
+                            <?php foreach(DB::table('value_team')->where('org_id',$organization->org_id)->get() as $r){ ?>
+                              <option value="{{ $r->id }}">{{ $r->team_title }}</option>
+                               <?php }  ?>
+
+                           </select>
+                            <label for="small-description">Choose Team</label>
                         </div>
-                        </div>
+                    </div>
+                    @endif
                         
+                      
+
                          <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
                              <select name="locstate" id="" onchange="getvaluekey(this.value)"  class="form-control obj" value="" required>
@@ -525,7 +568,7 @@ $var_objective = "Backlog";
                              <select name="locinit" id="" class="form-control init"  value="" required>
                                                     
                             </select>
-                                <label for="small-description">Choose Initiative</label>
+                                <label for="small-description">Choose initiative</label>
                             </div>
                         </div>
                         
@@ -533,7 +576,7 @@ $var_objective = "Backlog";
                         <div class="form-group mb-0">
                         <input type="date" class="form-control" name="start_date[]" value="{{ date('Y-m-d') }}" required>
                          <label for="start-date">Start Date</label>
-                        </div>
+                         </div>
                         </div>
                                                 
                         <div class="col-md-6 col-lg-6 col-xl-6">
@@ -545,7 +588,7 @@ $var_objective = "Backlog";
                      
                         
                         <div class="col-md-12">
-                            <button class="btn btn-primary btn-lg btn-theme btn-block ripple mt-3"  type="submit">Add</button>
+                            <button class="btn btn-primary btn-lg btn-theme btn-block ripple mt-3"  type="submit">Assign Epics</button>
                         </div>
                     </div>
                 </form>
@@ -578,10 +621,9 @@ $var_objective = "Backlog";
                
                 <input type="hidden" name="backlog_id" value="{{$organization->id}}">
                 <input type="hidden" name="type" value="{{$organization->type}}">
-                
-                  <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
-                               <select class="form-control"  onchange="get_jira_project(this.value)"  id="JIRA" name="jira_name" required>
+                               <select class="form-control" onchange="get_jira_project(this.value)"  id="JIRA" name="jira_name" required>
                                 <option value="" >Select Jira Connect</option>
                                 <?php foreach(DB::table('jira_setting')->where('user_id',Auth::id())->get() as $r){ ?>
                                   <option value="{{ $r->id }}">{{ $r->jira_name }}</option>-->
@@ -592,15 +634,14 @@ $var_objective = "Backlog";
                             </div>
                         </div>
                         
-                    <div class="col-md-12 col-lg-12 col-xl-12">
+                          <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
                                <select class="form-control" onchange="c_jira(this.value)" id="jira-project" name="jira_project" required>
 
                                </select>
                                 <label for="small-description">Choose Jira Project</label>
                             </div>
-                        </div>    
-
+                        </div>
                     <div class="row" id="jita-data">
             
                         
@@ -616,8 +657,7 @@ $var_objective = "Backlog";
 
 <script>
     $(document).ready(function() {
-      // DataTables initialization
-     var table = $('.example').DataTable({
+        var table = $('.example').DataTable({
     "pagingType": "full_numbers",
     "language": {
         "paginate": {
@@ -634,24 +674,30 @@ $var_objective = "Backlog";
       $('#checkAll').change(function() {
         $(':checkbox', 'tbody').prop('checked', this.checked);
       });
+      
+    
+
     });
+    
+      
+    
     
     function get_epic()
     {
-  
-    var selectedOptions = [];
+   
+    var selectedOption = [];
     $('.checkbox:checked').each(function() {
-     selectedOptions.push($(this).val());
+        selectedOption.push($(this).val());
      
       });
-      
-      var selectedOptionsString = selectedOptions.join(',');
 
-       $('#values').val(selectedOptionsString);
+      var selectedOptionsString = selectedOption.join(',');
+
+       $('#backlog-id').val(selectedOptionsString);
       
-      if(selectedOptions.length > 0 )
+      if(selectedOption.length > 0 )
       {
-      $('#assign-backlog-epic').modal('show');
+      $('#assign-Teambacklog-epic').modal('show');
       $('.category').val('');
       }
 
@@ -697,6 +743,8 @@ $var_objective = "Backlog";
       }
 
        });
+
+  
         
        function getvaluekey(id)
         {
@@ -745,7 +793,7 @@ $var_objective = "Backlog";
         if(res)
         {
         $('.init').empty();
-        $('.init').append('<option hidden value="">Choose Initiative</option>'); 
+        $('.init').append('<option hidden value="">Choose initiative</option>'); 
         $.each(res, function(key, course){
         $('select[name="locinit"]').append('<option value="'+ course.id +'">' + course.initiative_name+ '</option>');
         });
@@ -758,7 +806,7 @@ $var_objective = "Backlog";
 
         }
         
-        function assign_epic(val)
+        function assign_epic_unit(val)
         {
             
         var slug = "{{$organization->slug}}";   
@@ -766,7 +814,7 @@ $var_objective = "Backlog";
          
         $.ajax({
         type: "GET",
-        url: "{{ url('get-assign-epic') }}",
+        url: "{{ url('get-assign-epic-unit') }}",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -778,7 +826,6 @@ $var_objective = "Backlog";
         success: function(res) {
           
         $('#olddata').html(res);
-        // $('#olddata').hide();
         
 
         }
@@ -788,12 +835,14 @@ $var_objective = "Backlog";
         
         function c_jira(id)
         {
-            
+           
         var y = $('#JIRA').val();
         var unit_id = "{{$organization->id}}"; 
 
-        $('#jita-data').html('');    
-       
+        $('#jita-data').html('');
+
+        if(y != '')
+        {
         $.ajax({
         type: "GET",
         url: "{{ url('get-jira-epic') }}",
@@ -806,7 +855,7 @@ $var_objective = "Backlog";
         unit_id:unit_id
         },
         success: function(res) {
-          
+         
         if(res == 1)
         {
         $('#jita-data').html('<span class="ml-7 text-danger">Backlog of Project '+id+' Already Assinged</span>');
@@ -814,13 +863,14 @@ $var_objective = "Backlog";
         {
         $('#jita-data').html(res);
    
-        }          
+        }  
+        
 
         }
         });
+        }
 
         }
-        
         
         function get_jira_project(id)
         {
@@ -860,10 +910,9 @@ $var_objective = "Backlog";
         
         
         
-       $(document).ready(function() {
-        setTimeout(function(){$('.alert-success').slideUp();},3000); 
-        });
-
+$(document).ready(function() {
+ setTimeout(function(){$('.alert-success').slideUp();},3000); 
+}); 
         
 
   </script>

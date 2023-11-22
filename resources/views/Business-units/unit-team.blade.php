@@ -64,7 +64,7 @@ $var_objective = "Org-Unit-team";
                                                                 <span class="checkbox-label"></span>
                                                             </label>
                                                         </td>
-                                                        <td>{{$team->team_title}}</td>
+                                                        <td><a class="nav-link" href="{{url('dashboard/organization/'.$team->slug.'/portfolio/BU')}}">{{$team->team_title}}</a></td>
                                                         
                                                         <td>{{$dataCount}}</td>
                                                         <td>4</td>

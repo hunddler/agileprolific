@@ -75,10 +75,64 @@
                                     <label for="small-description">Small Description</label>
                                 </div>
                             </div>
+
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="d-flex flex-row align-items-center justify-content-between mt-4">
+                              <div>
+                                Target Values
+                              </div>
+                            
+                        </div>
+                        <hr>
+                        </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group mb-0">
+                                   <select class="form-control" id="key_result_type" >
+                                    <option value="Should Increase to">Should Increase To</option>
+                                      <option value="Should decrease to">Should decrease To</option>
+                                       <option value="Should stay above">Should stay above</option>
+                                       <option value="Should stay below">Should stay below</option>
+                                       <option value="Achieved">Achieved or not(100% / 0%)</option>
+
+                                   </select>
+                                    <label for="small-description">Key Result Type</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group mb-0">
+                                   <select class="form-control" id="key_result_unit" >
+                                    <option value="number">Number</option>
+                                      <option value="pound £">pound £</option>
+                                       <option value="Euro €">Euro €</option>
+                                       <option value="Dollar $">Dollar $</option>
+
+                                   </select>
+                                    <label for="small-description">Unit</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group mb-0">
+                                    <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control" id="init_value" required>
+                                    <label for="objective-name">Initial Number</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group mb-0">
+                                    <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control" id="target_number" required>
+                                    <label for="objective-name">Target Number</label>
+                                </div>
+                            </div>
                             
                                         <div class="col-md-8 mt-1 mb-4">
-                                         <input type="text" class="form-control target_value" placeholder="Target Value" id=""  onkeypress="return onlyNumberKey(event)">
-                                         </div>
+                                        <div class="form-group mb-0">
+                                         <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control target_value" placeholder="" id=""  onkeypress="return onlyNumberKey(event)">
+                                         <label for="small-description">Quarter 1 Target Value</label>
+                                        </div> 
+                                        </div>
                                             <div class="col-md-4 mt-5">
 											<a href="javascript:void(0);" class="add_value text-black" title="Add field"><i class="fa fa-plus" aria-hidden="true"></i></a>
 

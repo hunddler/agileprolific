@@ -62,7 +62,7 @@ $var_objective = "Stream-team";
                                                                 <span class="checkbox-label"></span>
                                                             </label>
                                                         </td>
-                                                        <td>{{$team->team_title}}</td>
+                                                        <td><a class="nav-link" href="{{url('dashboard/organization/'.$team->slug.'/portfolio/VS')}}">{{$team->team_title}}</td></a>
                                                         
                                                         <td>{{$dataCount}}</td>
                                                

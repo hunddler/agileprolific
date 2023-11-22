@@ -305,6 +305,7 @@ class MemberController extends Controller
             'member' => implode(',',$request->member),
             'lead_id' => $request->lead_manager_team,
             'team_title' => $request->team_title,
+            'slug' => Str::slug($request->team_title.'-'.rand(10, 99)),
             
             ]);
       
@@ -324,6 +325,7 @@ class MemberController extends Controller
             'member' => implode(',',$request->member),
             'lead_id' => $request->lead_manager_team,
             'team_title' => $request->team_title,
+            'slug' => Str::slug($request->team_title.'-'.rand(10, 99)),
             
             
             ]);
@@ -510,7 +512,23 @@ class MemberController extends Controller
     
     public function GetBacklogObj(Request $request)
     {
-    $objective = DB::table('objectives')->where('unit_id',$request->id)->where('trash',NULL)->get();
+    if($request->type == 'BU')
+    {   
+    $objective = DB::table('objectives')->where('unit_id',$request->id)->where('type','BU')->where('trash',NULL)->get();
+    }
+    if($request->type == 'VS')
+    {   
+    $objective = DB::table('objectives')->where('unit_id',$request->id)->where('type','VS')->where('trash',NULL)->get();
+    }
+    if($request->type == 'unit')
+    {
+    $objective = DB::table('objectives')->where('unit_id',$request->id)->where('type','unit')->where('trash',NULL)->get();
+    }
+    if($request->type == 'stream')
+    {
+    $objective = DB::table('objectives')->where('unit_id',$request->id)->where('type','stream')->where('trash',NULL)->get();
+    }       
+    
     return $objective;
     }
     
@@ -525,6 +543,8 @@ class MemberController extends Controller
     $objective = DB::table('initiative')->where('key_id',$request->id)->get();
     return $objective;
     }
+
+
     
      public function AssignBacklogEpic(Request $request)
     {
@@ -745,6 +765,22 @@ class MemberController extends Controller
      $organization = DB::table('value_stream')->where('slug',$id)->first();   
      $data = DB::table('kpi_setting')->where('user_id',Auth::id())->where('stream_id',$organization->id)->where('type','stream')->get();  
      }
+
+     if($type == 'BU')
+     {
+     $organization  = DB::table('unit_team')->where('slug',$id)->first();
+     $data = DB::table('kpi_setting')->where('user_id',Auth::id())->where('stream_id',$organization->id)->where('type','BU')->get();  
+
+            
+     }
+
+     if($type == 'VS')
+     {
+     $organization  = DB::table('value_team')->where('slug',$id)->first();
+     $data = DB::table('kpi_setting')->where('user_id',Auth::id())->where('stream_id',$organization->id)->where('type','VU')->get();  
+
+            
+     }
      
      return view('Chart.chart',compact('data','organization','type'));
     }
@@ -770,6 +806,7 @@ class MemberController extends Controller
             'member' => implode(',',$request->edit_member),
             'lead_id' => $request->edit_lead_manager_team,
             'team_title' => $request->team_title_edit,
+            'slug' => Str::slug($request->team_title_edit.'-'.rand(10, 99)),
             
             
             ]);
@@ -1145,6 +1182,7 @@ $updateData = [
             'member' => implode(',',$request->member),
             'lead_id' => $request->lead_manager_team,
             'team_title' => $request->team_title,
+            'slug' => Str::slug($request->team_title.'-'.rand(10, 99)),
             
             ]);
       

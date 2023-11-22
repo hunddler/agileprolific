@@ -49,6 +49,22 @@ class ObjectiveController extends Controller
 
             
         }
+
+        if($type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$id)->first();
+          $objective =     DB::table('objectives')->where('unit_id',$organization->id)->where('trash',NULL)->where('type','BU')->get();
+
+            
+        }
+
+        if($type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$id)->first();
+          $objective =     DB::table('objectives')->where('unit_id',$organization->id)->where('trash',NULL)->where('type','VS')->get();
+
+            
+        }
         
          
          Jira::UpdateEpicjira();
@@ -101,6 +117,24 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+
+        
+
          return view('objective.objective-render',compact('organization','objective'));
 
            
@@ -142,6 +176,22 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+        
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+
 
          return view('objective.objective-render',compact('organization','objective'));  
 
@@ -174,6 +224,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
         return view('objective.objective-render',compact('organization','objective'));
@@ -210,7 +277,7 @@ class ObjectiveController extends Controller
          $team = NULL;   
         }
          
-        DB::table('key_result')->insert([
+       $KEY =  DB::table('key_result')->insertGetId([
 
         'key_name' => $request->key_name,
         'obj_id' => $request->obj_id,
@@ -221,10 +288,25 @@ class ObjectiveController extends Controller
         'weight' => $request->weight,
         'key_status' => $request->k_status,
         'target_value' => $team,
+        'key_result_type' => $request->key_result_type,
+        'key_unit' => $request->key_result_unit,
+        'init_value' => $request->init_value,
+        'target_number' => $request->target_number,
      
 
 
         ]);
+
+        $counter = 0;
+        foreach($request->Target  as $key => $value)
+        {
+          $counter++;
+          DB::table('key_chart')->insert([
+            'quarter_value' => $request->Target[$key],
+            'key_id' =>  $KEY,
+            'IndexCount' => $counter,
+          ]);
+        }
 
         if($request->type == 'unit')
         {
@@ -238,6 +320,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective'));
@@ -294,6 +393,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective'));
@@ -321,6 +437,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective')); 
@@ -464,6 +597,23 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
+
 
         return view('objective.objective-render',compact('organization','objective'));
 
@@ -496,6 +646,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective')); 
@@ -573,6 +740,22 @@ class ObjectiveController extends Controller
         {
          $organization  = DB::table('value_stream')->where('slug',$request->slug)->first();
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
+            
+        }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
             
         }
 
@@ -723,6 +906,23 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
+
 
          return view('objective.objective-render',compact('organization','objective')); 
 
@@ -810,6 +1010,23 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
+
 
          return view('objective.objective-render',compact('organization','objective')); 
       
@@ -870,6 +1087,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$id)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective'));
@@ -1100,6 +1334,23 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
+
 
          return view('objective.objective-render',compact('organization','objective')); 
 
@@ -1254,6 +1505,23 @@ class ObjectiveController extends Controller
           $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective'));
@@ -2354,6 +2622,23 @@ class ObjectiveController extends Controller
             
         }
 
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
+
         
        return view('objective.objective-render',compact('organization','objective'));
         
@@ -2395,6 +2680,23 @@ class ObjectiveController extends Controller
          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
             
         }
+
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+
+            
+        }
+        
 
 
          return view('objective.objective-render',compact('organization','objective')); 
@@ -2454,6 +2756,26 @@ class ObjectiveController extends Controller
          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','stream')->get();          
           return view('objective.epicFlag',compact('organization','objective','FladId'));   
         }
+
+        
+        if($request->type == 'BU')
+        {
+          $organization  = DB::table('unit_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','BU')->get();   
+          return view('objective.epicFlag',compact('organization','objective','FladId'));   
+
+            
+        }
+
+        if($request->type == 'VS')
+        {
+          $organization  = DB::table('value_team')->where('slug',$request->slug)->first();
+          $objective =     DB::table('objectives')->where('org_id',$request->org_id)->where('unit_id',$request->unit_id)->where('trash',NULL)->where('type','VS')->get();   
+          return view('objective.epicFlag',compact('organization','objective','FladId'));   
+
+            
+        }
+        
 
 
          

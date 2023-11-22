@@ -51,6 +51,14 @@
             @include('member.navbar')
             @include('member.sub-nav')
             @endif
+
+            @if ($var_objective == 'PageT-BU')
+            @include('Business-units.Team-sidebar')
+            @endif
+
+            @if ($var_objective == 'PageT-VS')
+            @include('Business-units.Team-sidebar')
+            @endif
             
             
             
@@ -148,6 +156,32 @@
             @include('member.sub-nav')
 
             @endif
+
+            @if ($var_objective == 'TBaclog-BU')
+            @include('Business-units.Team-sidebar')
+            @endif
+
+            @if ($var_objective == 'TBaclog-VS')
+            @include('Business-units.Team-sidebar')
+            @endif
+
+            @if ($var_objective == 'Page-BU')
+            @include('Business-units.Team-sidebar')
+
+            @endif
+
+            @if ($var_objective == 'Page-VS')
+            @include('Business-units.Team-sidebar')
+            @endif
+
+            @if ($var_objective == 'Report-BU')
+            @include('Business-units.Team-sidebar')
+            @endif
+
+            @if ($var_objective == 'Report-VS')
+            @include('Business-units.Team-sidebar')
+            @endif
+            
             
             <!-- end Sidebar -->
             <div class="content d-flex flex-column flex-column-fluid">
@@ -246,20 +280,55 @@
                  @include('Report.report-breadcrum')
 
                  @endif
+
+                 @if ($var_objective == 'Report-BU')
+                 @include('Report.report-breadcrum')
+                 @endif
+
+                 @if ($var_objective == 'Report-VS')
+                 @include('Report.report-breadcrum')
+                 @endif
                  
                 @if ($var_objective == 'PageV-stream')
                 @include('components.objective-script')
                 @include('components.breadcrumb-component')
                 @include('components.modal')
-
                 @endif
                 
                 @if ($var_objective == 'PageU-unit')
                 @include('components.breadcrumb-component')
                 @include('components.objective-script')
                 @include('components.modal')
-             
+                @endif
 
+                @if ($var_objective == 'PageT-BU')
+                @include('components.breadcrumb-component')
+                @include('components.objective-script')
+                @include('components.modal')
+                @endif
+
+                @if ($var_objective == 'PageT-VS')
+                @include('components.breadcrumb-component')
+                @include('components.objective-script')
+                @include('components.modal')
+                @endif
+
+                @if ($var_objective == 'TBaclog-BU')
+                @include('Team.Team-breadcrumb')
+                @endif
+
+                @if ($var_objective == 'TBaclog-VS')
+                @include('Team.Team-breadcrumb')
+                @endif
+
+                @if ($var_objective == 'Page-BU')
+                @include('components.chart-breadcrumb')
+                @include('components.modal')    
+                @endif
+
+                @if ($var_objective == 'Page-VS')
+                @include('components.chart-breadcrumb')
+                @include('components.modal')    
                 @endif
                  
                   

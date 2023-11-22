@@ -180,6 +180,13 @@ class OrganizationController extends Controller
     
      public function saveQuarter(Request $request)
     {
+
+      $counter = 1;
+      $data = DB::table('sprint')->orderby('id','DESC')->where('value_unit_id',$request->unit_id)->first();
+      if($data)
+      {
+      $counter = $data->IndexCount + 1; 
+      }
         DB::table('sprint')
         ->insert([
           'title' => $request->title,
@@ -188,6 +195,7 @@ class OrganizationController extends Controller
           'detail' => $request->detail,
           'user_id' => Auth::id(),
           'value_unit_id'  => $request->unit_id,
+          'IndexCount' => $counter,
 
         
         ]);
@@ -383,6 +391,19 @@ class OrganizationController extends Controller
           $organization = DB::table('value_stream')->where('slug',$id)->first();        
           $report  =  DB::table('sprint')->where('value_unit_id',$organization->id)->get();
           }
+
+          if($type == 'BU')
+          {
+          $organization = DB::table('unit_team')->where('slug',$id)->first();        
+          $report  =  DB::table('sprint')->where('value_unit_id',$organization->id)->get();
+          }
+
+          
+          if($type == 'VS')
+          {
+          $organization = DB::table('value_team')->where('slug',$id)->first();        
+          $report  =  DB::table('sprint')->where('value_unit_id',$organization->id)->get();
+          }
           
           return view('Report.Bu-report',compact('report','organization','type'));
 
@@ -404,6 +425,14 @@ class OrganizationController extends Controller
           if($type == 'stream')
           {
           $organization = DB::table('value_stream')->where('id',$report->value_unit_id)->first();
+          }
+          if($type == 'BU')
+          {
+          $organization = DB::table('unit_team')->where('id',$report->value_unit_id)->first();        
+          }
+          if($type == 'VS')
+          {
+          $organization = DB::table('value_team')->where('id',$report->value_unit_id)->first();        
           }
           if($sprint)
           {
