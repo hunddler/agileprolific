@@ -122,7 +122,7 @@ $var_objective = "flag-impediments";
 </div>
 <div class="modal fade" id="edit-epic" tabindex="-1" role="dialog" aria-labelledby="edit-epic" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 526px !important;">
+        <div class="modal-content" style="width: 626px !important;">
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
@@ -133,49 +133,36 @@ $var_objective = "flag-impediments";
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img src="{{asset('public/assets/images/icons/minus.svg') }}">
+                    <img src="{{url('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
-            <form class="needs-validation" action="{{ url('dashboard/flags/updateflag') }}" novalidate>
-            @csrf
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group mb-0">
-                            <input type="text" class="form-control" id="objective-name" required>
-                            <label for="objective-name">Flag Title</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group mb-0">
-                           <select class="form-control" id="flag_type">
-                               <option value="">Select Flag Type</option>
-                               <option value="Risk">Risk</option>
-                               <option value="Impediment">Impediment</option>
-                               <option value="Blocker">Blocker</option>
-                               <option value="Action">Action</option>
+            <div class="modal-body" id="showformforedit">
 
-                           </select>
-                            <label for="small-description">Flag Type</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-6">
-                        <div class="form-group mb-0">
-                            <select class="form-control" id="flag_assign">
-                                  <option value="41">Test</option>
-                                  <option value="44">shahzad</option>
-                                  <option value="51">Zeeshan</option>
-                            </select>
-                            <label for="lead-manager">Flag Assignee</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button class="btn btn-primary btn-lg btn-theme btn-block ripple">Submit</button>
-                    </div>
-                </div>
             </div>
-            </form>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteflagmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Impediments Flag</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" id="deleteflagform" action="{{ url('dashboard/flags/deleteflag') }}">
+             @csrf   
+            <input type="hidden" name="delete_id" id="deleteid">
+            <div class="modal-body">
+                Are you sure you want to Delete this Impediments Flag?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" id="deleteflagbutton" class="btn btn-danger btn-sm">Confirm</button>
+            </div>
+        </form>
+      </div>
     </div>
 </div>
 <!-- MDB -->
@@ -244,16 +231,41 @@ function editflag(id) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data: {
-            parentElId:parentElId,
-            droppedElId:droppedElId,
+            id:id,
         },
-        success: function(response) {
-            console.log('Card position updated successfully.');
+        success: function(res) {
+            $('#showformforedit').html(res);
+            $('#edit-epic').modal('show')
         },
         error: function(error) {
             console.log('Error updating card position:', error);
         }
     });
 }
+function deleteflag(id) {
+    $('#deleteid').val(id);
+    $('#deleteflagmodal').modal('show');
+}
+
+$('#deleteflagform').on('submit',(function(e) {
+    $('#deleteflagbutton').html('<i class="fa fa-spin fa-spinner"></i>');
+    e.preventDefault();
+    var value = $('#deleteid').val();
+    var formData = new FormData(this);
+    $.ajax({
+        type:'POST',
+        url: $(this).attr('action'),
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+            $('#deleteflagbutton').html('Confirm');
+            $('#'+value).remove();
+            $('#deleteflagmodal').modal('hide');
+        }
+    });
+}));
+
 </script>
 @endsection

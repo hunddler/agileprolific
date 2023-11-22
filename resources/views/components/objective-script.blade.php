@@ -1244,7 +1244,7 @@ if ($('#epic_name').val() != '' ) {
 
 
 
-function editepic(epic_id,epic_name,epic_start_date,epic_end_date,epic_detail,epic_status,ini_epic_id,epic_key,epic_obj)
+function editepic(buisness_unit_id,epic_id,epic_name,epic_start_date,epic_end_date,epic_detail,epic_status,ini_epic_id,epic_key,epic_obj)
         {
          $('#epic_story_edit').html('');        
          $('#edit_epic_id').val(epic_id);   
@@ -1252,6 +1252,8 @@ function editepic(epic_id,epic_name,epic_start_date,epic_end_date,epic_detail,ep
          $('#edit_epic_start_date').val(epic_start_date);   
          $('#edit_epic_end_date').val(epic_end_date);   
          $('#edit_epic_status').val(epic_status);
+         $('#edit_buisness_unit_id').val(buisness_unit_id);
+         
          
           $('#edit_ini_epic_id').val(ini_epic_id);
           $('#edit_epic_key').val(epic_key);
@@ -1777,7 +1779,7 @@ var slug = "{{ $organization->slug }}";
 var unit_id = "{{ $organization->id }}";
 var ini_epic_id = $('#ini_epic_id_month').val();
 var epic_status = $('#epic_status_month').val();
-
+var buisness_unit_id = $('#buisness_unit_id').val();
 var epic_key = $('#epic_key_month').val();
 var epic_obj = $('#epic_obj_month').val();
 
@@ -1815,7 +1817,8 @@ if ($('#epic_name_month').val() != '' ) {
             type:type,
             epic_obj:epic_obj,
             selectedOptions:selectedOptions,
-            epic_key:epic_key
+            epic_key:epic_key,
+            buisness_unit_id:buisness_unit_id
             
         },
         success: function(res) {
