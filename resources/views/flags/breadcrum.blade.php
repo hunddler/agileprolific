@@ -29,6 +29,26 @@
         <!--end::Info-->
         <!--begin::Toolbar-->
         <div>
+            <!-- <button class="btn-circle btn-tolbar bg-transparent" type="button" onclick="GetFagEpic();">
+                <img src="{{url('public/assets/images/icons/filter.svg')}}" width="20">
+           </button> -->
+
+           <!-- Example split danger button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default" style="border-top-right-radius:0px !important; border-bottom-right-radius:0px !important;"> 
+                    <img src="{{url('public/assets/images/icons/filter.svg')}}" width="20">
+                    View All
+                </button>
+              <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" style="border-top-left-radius:0px !important; border-bottom-left-radius:0px !important; background-color: #f1f1f1 !important; border:#f1f1f1 !important; padding-left: 0px !important;"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{url('public/assets/images/icons/angle-down.svg')}}" width="20">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">View All</a>
+                <a class="dropdown-item" href="#">Archived</a>
+              </div>
+            </div>
+
             <button class="btn btn-primary" data-toggle="modal" data-target="#edit-epic">
                 Add New
             </button>
@@ -92,7 +112,10 @@
                         </div>
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
-                                <input type="text" class="form-control" id="objective-name" required>
+                                <select class="form-control" id="options" onchange="displayDescription()" required>
+                                    <option value="option1">Option 1 - Short title 1 <br> Description 1</option>
+                                    <option value="option2">Option 2 - Short title 2 <br> Description 2</option>
+                                </select>
                                 <label for="objective-name">Assign to an Epic (Optional)</label>
                             </div>
                         </div>
