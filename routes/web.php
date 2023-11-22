@@ -203,5 +203,6 @@ Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flag
     Route::POST('orderbycomment', 'FlagController@orderbycomment');
     Route::POST('deleteflag', 'FlagController@deleteflag');
     Route::POST('savereply', 'FlagController@savereply');
-    
+    Route::POST('searchflag', 'FlagController@searchflag');
+    Route::POST('createimpediment', 'FlagController@createimpediment');
 });

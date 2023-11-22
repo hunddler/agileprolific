@@ -22,6 +22,13 @@ class FlagController extends Controller
         $todoflag = Epic::wherenotnull('flag_status')->wherenotnull('flag_title')->wherenull('trash')->where('buisness_unit_id' , $organization->id)->where('flag_status' , 'todoflag')->orderby('flag_order' , 'asc')->get();
     	return view('flags.index',compact('organization','doneflag','inprogress','todoflag')); 
     }
+    public function searchflag(Request $request)
+    {
+        $organization = DB::table('business_units')->where('id',$request->organization_id)->first();
+        $flag = Epic::wherenotnull('flag_status')->wherenotnull('flag_title')->wherenull('trash')->where('buisness_unit_id' , $organization->id)->where('flag_status' , $request->id)->where('flag_title', 'LIKE', "%$request->value%")->orderby('flag_order' , 'asc')->get();
+        $html = view('flags.searchcard', compact('flag'))->render();
+        return $html;
+    }
     public function changestatus(Request $request)
     {
         DB::table('epics')->where('id',$request->droppedElId)->update(['flag_status' => $request->parentElId]);
@@ -71,9 +78,6 @@ class FlagController extends Controller
         $html = view('flags.allcomments', compact('comments'))->render();
         return $html;
     }
-
-    
-
     public function deletecomment(Request $request)
     {
         $comment = flag_comments::find($request->id);

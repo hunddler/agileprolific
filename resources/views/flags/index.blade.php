@@ -36,7 +36,7 @@ $var_objective = "flag-impediments";
                                                     </div>
                                                 </div>
                                                 <div class="kanban-search-bar">
-                                                    <input type="text" class="form-control input-sm" placeholder="Search...">
+                                                    <input onkeyup="searchflag(this.value,'todoflag')" type="text" class="form-control input-sm" placeholder="Search...">
                                                 </div>
                                                 <div class="kanban-content" id="todoflag">
                                                     @foreach($todoflag as $r)
@@ -68,9 +68,9 @@ $var_objective = "flag-impediments";
                                                     </div>
                                                 </div>
                                                 <div class="kanban-search-bar">
-                                                    <input type="text" class="form-control input-sm" placeholder="Search...">
+                                                    <input onkeyup="searchflag(this.value,'inprogress')" type="text" class="form-control input-sm" placeholder="Search...">
                                                 </div>
-                                                <div class="kanban-content" id="inprogress">
+                                                <div class="kanban-content"  id="inprogress">
                                                     @foreach($inprogress as $r)
                                                         @include('flags.card')
                                                     @endforeach
@@ -100,7 +100,7 @@ $var_objective = "flag-impediments";
                                                     </div>
                                                 </div>
                                                 <div class="kanban-search-bar">
-                                                    <input type="text" class="form-control input-sm" placeholder="Search...">
+                                                    <input onkeyup="searchflag(this.value,'doneflag')" type="text" class="form-control input-sm" placeholder="Search...">
                                                 </div>
                                                 <div class="kanban-content" id="doneflag">
                                                     @foreach($doneflag as $r)
@@ -222,6 +222,27 @@ drakeflags.on("drop", function (el, target, source, sibling) {
 function toggleSearch(columnId) {
     var searchBar = document.getElementById(columnId).getElementsByClassName('kanban-search-bar')[0];
     searchBar.classList.toggle('kanban-search-bar-expanded');
+}
+function searchflag(value,id) {
+    var organization = '{{ $organization->id }}';
+    $.ajax({
+        type: "POST",
+        url: "{{ url('dashboard/flags/searchflag') }}",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            value:value,
+            id:id,
+            organization_id:organization,
+        },
+        success: function(res) {
+            $('#'+id).html(res);
+        },
+        error: function(error) {
+            console.log('Error updating card position:', error);
+        }
+    });
 }
 function editflag(id) {
     $.ajax({

@@ -94,10 +94,10 @@
                         </button>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Archive</a>
-                            <a class="dropdown-item" onclick="editflag({{$r->id}})" href="javascript:void(0)" data-toggle="modal" data-target="#edit-epic">Edit</a>
-                            <a class="dropdown-item" href="#">Delete</a>
-                            <a class="dropdown-item" href="#">Escalate</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Archive</a>
+                            <a class="dropdown-item" onclick="editflag({{$r->id}})" href="javascript:void(0)">Edit</a>
+                            <a class="dropdown-item" onclick="deleteflag({{$r->id}})" href="javascript:void(0)">Delete</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Escalate</a>
                         </div>
 
                     </div>
