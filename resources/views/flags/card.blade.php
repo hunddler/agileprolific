@@ -63,7 +63,7 @@
                     </div>
                     <div class="d-flex flex-row align-items-center">
                         <div class="pr-1">
-                            <small>99</small>
+                            <small>{{ DB::Table('flag_comments')->where('epic_id' , $r->id)->where('type' , 'comment')->count() }}</small>
                         </div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -97,8 +97,8 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">Archive</a>
-                                <a class="dropdown-item" onclick="editflag({{$r->id}})" href="javascript:void(0)" data-toggle="modal" data-target="#edit-epic">Edit</a>
-                                <a class="dropdown-item" href="#">Delete</a>
+                                <a class="dropdown-item" onclick="editflag({{$r->id}})" href="javascript:void(0)">Edit</a>
+                                <a class="dropdown-item" onclick="deleteflag({{$r->id}})" href="#">Delete</a>
                                 <a class="dropdown-item" href="#">Escalate</a>
                             </div>
 
@@ -109,5 +109,3 @@
         </div>
     </div>
 </div>
-
-

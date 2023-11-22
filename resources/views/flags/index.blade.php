@@ -136,13 +136,33 @@ $var_objective = "flag-impediments";
                     <img src="{{url('public/assets/images/icons/minus.svg')}}">
                 </button>
             </div>
-            <form class="needs-validation" id="updateflag" action="{{ url('dashboard/flags/updateflag') }}" novalidate>
-                    @csrf
-                <div class="modal-body" id="showformforedit">
-                    
-                </div>
-            </form>
+            <div class="modal-body" id="showformforedit">
+
+            </div>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteflagmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Impediments Flag</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" id="deleteflagform" action="{{ url('dashboard/flags/deleteflag') }}">
+             @csrf   
+            <input type="hidden" name="delete_id" id="deleteid">
+            <div class="modal-body">
+                Are you sure you want to Delete this Impediments Flag?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" id="deleteflagbutton" class="btn btn-danger btn-sm">Confirm</button>
+            </div>
+        </form>
+      </div>
     </div>
 </div>
 <!-- MDB -->
@@ -214,18 +234,24 @@ function editflag(id) {
             id:id,
         },
         success: function(res) {
-            $('#showformforedit').html(res)
+            $('#showformforedit').html(res);
+            $('#edit-epic').modal('show')
         },
         error: function(error) {
             console.log('Error updating card position:', error);
         }
     });
 }
-$('#updateflag').on('submit',(function(e) {
-    $('#updatebutton').html('<i class="fa fa-spin fa-spinner"></i>');
+function deleteflag(id) {
+    $('#deleteid').val(id);
+    $('#deleteflagmodal').modal('show');
+}
+
+$('#deleteflagform').on('submit',(function(e) {
+    $('#deleteflagbutton').html('<i class="fa fa-spin fa-spinner"></i>');
     e.preventDefault();
+    var value = $('#deleteid').val();
     var formData = new FormData(this);
-    var cardid = $('#cardid').val();
     $.ajax({
         type:'POST',
         url: $(this).attr('action'),
@@ -234,10 +260,12 @@ $('#updateflag').on('submit',(function(e) {
         contentType: false,
         processData: false,
         success: function(data){
-            $('#updatebutton').html('Update');
-            $('#'+cardid).html(data)         
+            $('#deleteflagbutton').html('Confirm');
+            $('#'+value).remove();
+            $('#deleteflagmodal').modal('hide');
         }
     });
 }));
+
 </script>
 @endsection

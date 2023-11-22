@@ -197,5 +197,11 @@ Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flag
     Route::POST('change-flag-status', 'FlagController@changestatus');
     Route::POST('getflagmodal', 'FlagController@getflagmodal');
     Route::POST('updateflag', 'FlagController@updateflag');
+    Route::POST('savecomment', 'FlagController@savecomment');
+    Route::POST('deletecomment', 'FlagController@deletecomment');
+    Route::POST('updatecomment', 'FlagController@updatecomment');
+    Route::POST('orderbycomment', 'FlagController@orderbycomment');
+    Route::POST('deleteflag', 'FlagController@deleteflag');
+    Route::POST('savereply', 'FlagController@savereply');
     
 });

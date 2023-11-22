@@ -2365,11 +2365,11 @@ class ObjectiveController extends Controller
 
         DB::table('epics')->where('id',$request->flag_epic_id)->update([
 
-        'flag_type' => $request->flag_type,
-        'flag_assign' => $request->flag_assign,
-        'flag_title' => $request->flag_title,
-        'flag_description' => $request->flag_description,
-        'user_id' => Auth::id(),
+            'flag_type' => $request->flag_type,
+            'flag_assign' => $request->flag_assign,
+            'flag_title' => $request->flag_title,
+            'flag_description' => $request->flag_description,
+            'user_id' => Auth::id(),
 
         ]);
         

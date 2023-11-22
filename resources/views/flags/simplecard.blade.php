@@ -47,7 +47,6 @@
             <div class="d-flex flex-row align-items-center">
                 <div class="d-flex flex-row align-items-center image-cont pr-3">
                     <div class="pr-1">
-
                         @if($user->image != NULL)
                         <img class="user-image" src="{{asset('public/assets/images/'.$user->image)}}" alt="Example Image">
                         @else
@@ -62,7 +61,7 @@
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <div class="pr-1">
-                        <small>99</small>
+                        <small>{{ DB::Table('flag_comments')->where('epic_id' , $r->id)->where('type' , 'comment')->count() }}</small>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
