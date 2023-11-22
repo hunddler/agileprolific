@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Organization;
 use App\Models\Epic;
+use App\Models\flags;
 use App\Models\flag_comments;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -112,5 +113,18 @@ class FlagController extends Controller
             'flag_status' => NULL,
             'flag_order' => NULL,
         ]);
+    }
+    public function createimpediment(Request $request)
+    {
+        $flag = new flags();
+        $flag->business_units = $request->business_units;
+        $flag->epic_id = $request->epic_id;
+        $flag->flag_type = $request->flag_type;
+        $flag->flag_assign = $request->flag_assign;
+        $flag->flag_title = $request->flag_title;
+        $flag->flag_description = $request->flag_description;
+        $flag->flag_status = 'todoflag';
+        $flag->save();
+        return redirect()->back()->with('message', 'Flag Created Successfully!!');
     }
 }

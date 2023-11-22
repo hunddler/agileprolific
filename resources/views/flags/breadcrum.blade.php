@@ -29,11 +29,6 @@
         <!--end::Info-->
         <!--begin::Toolbar-->
         <div>
-            <!-- <button class="btn-circle btn-tolbar bg-transparent" type="button" onclick="GetFagEpic();">
-                <img src="{{url('public/assets/images/icons/filter.svg')}}" width="20">
-           </button> -->
-
-           <!-- Example split danger button -->
             <div class="btn-group">
               <button type="button" class="btn btn-default" style="border-top-right-radius:0px !important; border-bottom-right-radius:0px !important;"> 
                     <img src="{{url('public/assets/images/icons/filter.svg')}}" width="20">
@@ -48,12 +43,8 @@
                 <a class="dropdown-item" href="#">Archived</a>
               </div>
             </div>
-
-            <button class="btn btn-primary" data-toggle="modal" data-target="#add-epic">
-                Add New
-            </button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#add-flag">Add New</button>
         </div>
-        <!--end::Toolbar-->
     </div>
 </div>
 
@@ -62,7 +53,7 @@
 
 <!-- Add Edit Epic -->
 
-<div class="modal fade" id="add-epic" tabindex="-1" role="dialog" aria-labelledby="add-epic" aria-hidden="true">
+<div class="modal fade" id="add-flag" tabindex="-1" role="dialog" aria-labelledby="add-flag" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 626px !important;">
             <div class="modal-header">
@@ -79,8 +70,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="{{ url('dashboard/flags/createimpediment') }}" novalidate method="POST">
+                <form id="createimpediment" action="{{ url('dashboard/flags/createimpediment') }}" method="POST">
                     @csrf
+                    <input type="hidden" value="{{ $organization->id }}" name="business_units">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
@@ -113,9 +105,11 @@
                         </div>
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
-                                <select class="form-control" id="options" required>
-                                    <option value="option1">Option 1 - Short title 1 <br> Description 1</option>
-                                    <option value="option2">Option 2 - Short title 2 <br> Description 2</option>
+                                <select name="epic_id" class="form-control" id="options" required>
+                                    <option value="">Select Epic</option>
+                                    @foreach(DB::table('epics')->where('buisness_unit_id' , $organization->id)->get() as $r)
+                                    <option value="{{ $r->id }}">{{ $r->epic_name }}</option>
+                                    @endforeach
                                 </select>
                                 <label for="objective-name">Assign to an Epic (Optional)</label>
                             </div>
