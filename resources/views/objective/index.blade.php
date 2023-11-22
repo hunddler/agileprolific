@@ -1120,7 +1120,7 @@ $var_objective = 'PageV-'.$type;
     
  <div class="modal fade" id="create-epic-month" tabindex="-1" role="dialog" aria-labelledby="create-epic-month" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 526px !important;">
+        <div class="modal-content" style="width: 626px !important;">
             <div class="modal-header">
                 <div class="row">
                     <div class="col-md-12">
@@ -1193,35 +1193,33 @@ $var_objective = 'PageV-'.$type;
                         <!--    <hr>-->
                         <!--</div>-->
                         
-                    
-                        
                         @if($organization->type == 'unit')
                         <div class="col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group mb-0">
-                        <select class="form-control search-team" id="team" >
-                    
-                        @foreach(DB::table('unit_team')->where('org_id',$organization->id)->get() as $r)
-                        <option value="{{$r->id}}">{{$r->team_title}}</option>
-                        @endforeach
+                            <div class="form-group mb-0">
+                                <select class="form-control search-team" id="team" >
+                            
+                                @foreach(DB::table('unit_team')->where('org_id',$organization->id)->get() as $r)
+                                <option value="{{$r->id}}">{{$r->team_title}}</option>
+                                @endforeach
 
-                        </select>
-                          <label for="small-description" class="lable-bottom-imp" style="top:-40px">Assign Team</label>
-                            </div
+                                </select>
+                              <label for="small-description" class="lable-bottom-imp" style="top:-40px">Assign Team</label>
+                            </div>
                         </div>
                         @endif
                             
                             
                         @if($organization->type == 'stream')   
                         <div class="col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group mb-0">
-                        <select class="form-control search-team" id="team"  >
-                      
-                        @foreach(DB::table('value_team')->where('org_id',$organization->id)->get() as $r)
-                        <option value="{{$r->id}}">{{$r->team_title}}</option>
-                        @endforeach
-                        </select>
-                          <label for="small-description" style="top:-40px">Assign Team</label>
-                            </div
+                            <div class="form-group mb-0">
+                                <select class="form-control search-team" id="team"  >
+                              
+                                    @foreach(DB::table('value_team')->where('org_id',$organization->id)->get() as $r)
+                                    <option value="{{$r->id}}">{{$r->team_title}}</option>
+                                    @endforeach
+                                </select>
+                              <label for="small-description" style="top:-40px">Assign Team</label>
+                            </div>
                         </div>
                         @endif
                         
@@ -1240,7 +1238,271 @@ $var_objective = 'PageV-'.$type;
                         <!-- <div class="col-md-12">-->
                         <!--    <button class="btn btn-primary  w-50 mt-2 add_button" type="button">Add on item</button>-->
                         <!--</div>-->
-                        
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex flex-row align-items-center justify-content-between comment-header">
+                                <div>
+                                    <h4>Stories</h4>
+                                </div>
+                                <div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <div class="dropdown">
+                                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
+                                              <path d="M10.8339 0.644857C10.6453 0.456252 10.3502 0.439106 10.1422 0.593419L10.0826 0.644857L5.49992 5.2273L0.917236 0.644857C0.72863 0.456252 0.433494 0.439106 0.225519 0.593419L0.165935 0.644857C-0.0226701 0.833463 -0.0398163 1.1286 0.114497 1.33657L0.165935 1.39616L5.12427 6.35449C5.31287 6.5431 5.60801 6.56024 5.81599 6.40593L5.87557 6.35449L10.8339 1.39616C11.0414 1.18869 11.0414 0.852323 10.8339 0.644857Z" fill="#787878"/>
+                                            </svg> Order By
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Status</a>
+                                            <a class="dropdown-item" href="#">Type</a>
+                                            <a class="dropdown-item" href="#">Created</a>
+                                            <a class="dropdown-item" href="#">Assignee</a>
+                                          </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" id="ButtonCollaps" type="button" data-toggle="collapse" data-target="#AddStory" aria-expanded="false" aria-controls="AddStory">
+                                              Add Story
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Stories Module -->
+
+                    <div class="row mt-4 collapse" id="AddStory">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="card comment-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-0">
+                                                <input type="text" class="form-control" id="objective-name" required>
+                                                <label for="objective-name">Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-0">
+                                               <select class="form-control" id="flag_type">
+                                                   <option value="">Jhone Doe</option>
+                                               </select>
+                                                <label for="small-description">Assignee</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-0">
+                                               <select class="form-control" id="flag_type">
+                                                   <option value="">Story</option>
+                                                   <option value="">Task</option>
+                                                   <option value="">Defect</option>
+                                               </select>
+                                                <label for="small-description">Type</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="dropdown">
+                                                  <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
+                                                      <path d="M10.8339 0.644857C10.6453 0.456252 10.3502 0.439106 10.1422 0.593419L10.0826 0.644857L5.49992 5.2273L0.917236 0.644857C0.72863 0.456252 0.433494 0.439106 0.225519 0.593419L0.165935 0.644857C-0.0226701 0.833463 -0.0398163 1.1286 0.114497 1.33657L0.165935 1.39616L5.12427 6.35449C5.31287 6.5431 5.60801 6.56024 5.81599 6.40593L5.87557 6.35449L10.8339 1.39616C11.0414 1.18869 11.0414 0.852323 10.8339 0.644857Z" fill="#787878"/>
+                                                    </svg> Order By
+                                                  </button>
+                                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">To Do</a>
+                                                    <a class="dropdown-item" href="#">In Progress</a>
+                                                    <a class="dropdown-item" href="#">Done</a>
+                                                  </div>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-default btn-sm">Cancel</button>
+                                                    <button class="btn btn-primary btn-sm">Save Story</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Basil Put the progress bar here kindly -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="example" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <label class="form-checkbox">
+                                                <input type="checkbox" id="checkAll">
+                                                <span class="checkbox-label"></span>
+                                            </label>
+                                        </td>
+                                        <td>ID</td>
+                                        <td>Title</td>
+                                        <td>Assignee</td>
+                                        <td>Status</td>
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label class="form-checkbox">
+                                                <input type="checkbox">
+                                                <span class="checkbox-label"></span>
+                                            </label>
+                                        </td>
+                                        <td>SSP-123</td>
+                                        <td>Finalize Garden Design</td>
+                                        <td class="image-cell">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
+                                            <div>
+                                                <div class="title">Jhon Doe</div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <button class="btn-circle btn-tolbar">
+                                                <img src="images/icons/edit.svg">
+                                            </button>
+                                            <button class="btn-circle btn-tolbar">
+                                                <img src="images/icons/delete.svg">
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Comments, Basil This module been already created on the impediment board so you may simply copy and paste it here -->
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex flex-row align-items-center justify-content-between comment-header">
+                                <div>
+                                    <h4>Comments</h4>
+                                </div>
+                                <div class="dropdown">
+                                  <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
+                                      <path d="M10.8339 0.644857C10.6453 0.456252 10.3502 0.439106 10.1422 0.593419L10.0826 0.644857L5.49992 5.2273L0.917236 0.644857C0.72863 0.456252 0.433494 0.439106 0.225519 0.593419L0.165935 0.644857C-0.0226701 0.833463 -0.0398163 1.1286 0.114497 1.33657L0.165935 1.39616L5.12427 6.35449C5.31287 6.5431 5.60801 6.56024 5.81599 6.40593L5.87557 6.35449L10.8339 1.39616C11.0414 1.18869 11.0414 0.852323 10.8339 0.644857Z" fill="#787878"/>
+                                    </svg> Order By
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Latest</a>
+                                    <a class="dropdown-item" href="#">Older</a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex flex-column">
+                                <div>
+                                    <div class="form-group mb-0">
+                                        <input type="text" class="form-control" id="objective-name" required>
+                                        <label for="objective-name">Write Comment</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-default btn-sm">Cancel</button>
+                                    <button class="btn btn-primary btn-sm">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4 comment-area">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="card comment-card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div>
+                                                    <img class="user-image" src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww" style="width:34px; height:34px; background-size:cover">
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <div>
+                                                        <h5>Hadilton</h5>
+                                                        <small>12 Jan 2023, 12:00 pm</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="pr-2">
+                                                    <button class="btn-circle btn-tolbar">
+                                                        <img src="{{ url('public/assets/images/icons/edit.svg') }}">
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button class="btn-circle btn-tolbar">
+                                                        <img src="{{ url('public/assets/images/icons/delete.svg') }}">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>Delve into the challenges posed by recurring technical glitches and explore strategies to overcome these hurdles in a rapidly evolving digital landscape.</p>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-default btn-sm">Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card comment-card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div>
+                                                    <img class="user-image" src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww" style="width:34px; height:34px; background-size:cover">
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <div>
+                                                        <h5>Hadilton</h5>
+                                                        <small>12 Jan 2023, 12:00 pm</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="pr-2">
+                                                    <button class="btn-circle btn-tolbar">
+                                                        <img src="{{ url('public/assets/images/icons/edit.svg') }}">
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button class="btn-circle btn-tolbar">
+                                                        <img src="{{ url('public/assets/images/icons/delete.svg') }}">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p>Delve into the challenges posed by recurring technical glitches and explore strategies to overcome these hurdles in a rapidly evolving digital landscape.</p>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-default btn-sm">Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
                         <div class="col-md-12">
                             <button class="btn btn-primary btn-lg btn-theme btn-block ripple mt-3" onclick="saveEpicMonth();"  type="button">Save Epic</button>
                         </div>
@@ -1253,6 +1515,22 @@ $var_objective = 'PageV-'.$type;
 
 
 
+<!-- Change text on the story button when it's toggled and when not -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.getElementById('ButtonCollaps');
+    var collapseElement = document.getElementById('AddStory');
+
+    collapseElement.addEventListener('show.bs.collapse', function () {
+      toggleButton.innerText = 'Cancel';
+    });
+
+    collapseElement.addEventListener('hide.bs.collapse', function () {
+      toggleButton.innerText = 'Add Story';
+    });
+  });
+</script>
     
 @endsection    
     
