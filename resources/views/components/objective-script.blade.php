@@ -223,6 +223,13 @@ $(".check" ).hide();
 
 }
 
+$('#key_result_unit').val('');
+$('#key_result_type').val('');
+$('#init_value').val('');
+$('#target_number').val('');
+$('.target_value').val('');
+$('.field_wrapper_key').html('');
+
 
 
 
@@ -356,10 +363,13 @@ $.ajax({
              $( ".check" ).prop("checked",false);
              $('#weight').html('');
 
-             $('#key_result_unit').html('');
-             $('#key_result_type').html('');
-             $('#init_value').html('');
-             $('#target_number').html('');
+             $('#key_result_unit').val('');
+             $('#key_result_type').val('');
+             $('#init_value').val('');
+             $('#target_number').val('');
+             $('.target_value').val('');
+             $('.field_wrapper_key').html('');
+
 
             $('#success-obj-key').html(
                 '<div class="alert alert-success" role="alert"> Key Result Created successfully</div>'
@@ -1773,6 +1783,9 @@ $('#epic_end_date_month').val(endformattedDate);
 //   console.log(formattedDate); // Output: "2023-07-01"
 // } else {
 //   console.log("Invalid date.");
+$('#story-data').html('');
+var randomInteger = getRandomInt(100, 999);
+$('#r_id').val(randomInteger);
 // }
 
 }
@@ -1806,6 +1819,13 @@ var epicData = [];
 $('.epic-input').each(function() {
     epicData.push($(this).val());
 });
+var epicStory = [];
+$('.story_id').each(function() {
+    epicStory.push($(this).val());
+    });
+ 
+
+
 
 if ($('#epic_name_month').val() != '' ) {
 $.ajax({
@@ -1830,7 +1850,8 @@ $.ajax({
         type:type,
         epic_obj:epic_obj,
         selectedOptions:selectedOptions,
-        epic_key:epic_key
+        epic_key:epic_key,
+        epicStory:epicStory
         
     },
     success: function(res) {
@@ -2227,6 +2248,125 @@ $.ajax({
 }        
      
 }
+
+
+
+    function SaveNewStory()
+    {
+
+
+    var title = $('#story_title').val();
+    var story_assign  = $('#story_assign').val();
+    var story_type = $('#story_type').val();
+    var story_status  = $('#story_status').val();
+    var unit_id = "{{ $organization->id }}"; 
+    var RID  = $('#r_id').val(); 
+   
+    $.ajax({
+    type: "POST",
+    url: "{{ url('save-story') }}",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+    title:title,
+    story_assign:story_assign,
+    story_type:story_type,
+    story_status:story_status,
+    unit_id:unit_id,
+    RID:RID,
+
+    },
+    success: function(res) {
+      
+    $('#story_title').val('');
+    $('#story_assign').val('');
+    $('#story_type').val('');
+    $('#story_status').val('');
+    // $('#AddStory').slideUp();    
+    $('.story-data').html(res);
+
+    }
+});
+
+
+
+}
+
+function deletestorynew(id)
+    {
+
+    var unit_id = "{{ $organization->id }}"; 
+    var RID  = $('#r_id').val(); 
+   
+    $.ajax({
+    type: "POST",
+    url: "{{ url('delete-story-new') }}",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+    id:id,
+    unit_id:unit_id,
+    RID:RID,
+
+    },
+    success: function(res) {
+      
+ 
+    $('.story-data').html(res);
+
+    }
+});
+
+}
+function editstorynew(id)
+{
+$('#story_edit_id').val(id);
+}
+
+function UpdateNewStory(id)
+    {
+
+
+    var title = $('#edit_story_title'+id).val();
+    var story_assign  = $('#edit_story_assign' +id).val();
+    var story_status  = $('#edit_story_status' +id).val();
+    var unit_id = "{{ $organization->id }}"; 
+    var RID  = $('#r_id').val(); 
+   
+    $.ajax({
+    type: "POST",
+    url: "{{ url('update-story-new') }}",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+    id:id,    
+    title:title,
+    story_assign:story_assign,
+    story_status:story_status,
+    unit_id:unit_id,
+    RID:RID,
+
+    },
+    success: function(res) {
+      
+
+    $('.story-data').html(res);
+
+    }
+});
+
+
+
+}
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 
 

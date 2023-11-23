@@ -88,7 +88,8 @@
 
                             <div class="col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group mb-0">
-                                   <select class="form-control" id="key_result_type" >
+                                   <select class="form-control" id="key_result_type">
+                                    <option value="">Select Key Result Type</option>
                                     <option value="Should Increase to">Should Increase To</option>
                                       <option value="Should decrease to">Should decrease To</option>
                                        <option value="Should stay above">Should stay above</option>
@@ -103,6 +104,7 @@
                             <div class="col-md-12 col-lg-12 col-xl-6">
                                 <div class="form-group mb-0">
                                    <select class="form-control" id="key_result_unit" >
+                                    <option value="">Select Unit</option>
                                     <option value="number">Number</option>
                                       <option value="pound £">pound £</option>
                                        <option value="Euro €">Euro €</option>

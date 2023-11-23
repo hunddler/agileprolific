@@ -82,6 +82,9 @@ Route::post('update-story-check', [App\Http\Controllers\ObjectiveController::cla
 Route::post('add-story-new', [App\Http\Controllers\ObjectiveController::class, 'AddNewStory']);
 Route::post('update-story', [App\Http\Controllers\ObjectiveController::class, 'UpdateStoryTitle']);
 Route::post('delete-story', [App\Http\Controllers\ObjectiveController::class, 'DeleteStory']);
+Route::post('save-story', [App\Http\Controllers\ObjectiveController::class, 'SaveNewStory']);
+Route::post('delete-story-new', [App\Http\Controllers\ObjectiveController::class, 'DeleteNewStory']);
+Route::post('update-story-new', [App\Http\Controllers\ObjectiveController::class, 'UpdateNewStory']);
 
 Route::get('get-all-data', [App\Http\Controllers\ObjectiveController::class, 'GetAllData']);
 

@@ -89,7 +89,7 @@ $var_objective = 'PageT-'.$type;
             left: 0;
         }
         
-        @keyframes growProgressBar {
+        /* @keyframes growProgressBar {
           0%, 33% { --pgPercentage: 0; }
           100% { --pgPercentage: var(--value); }
         }
@@ -123,7 +123,7 @@ $var_objective = 'PageT-'.$type;
         div[role="progressbar"]::before {
           counter-reset: percentage var(--value);
           content: counter(percentage) '%';
-        }
+        } */
         
 </style>
 
@@ -1199,6 +1199,7 @@ $var_objective = 'PageT-'.$type;
                 <input type="hidden" id="epic_key_month">
                 <input type="hidden" id="month_id">
                 <input type="hidden" id="q_id">
+               
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group mb-0">
@@ -1326,7 +1327,7 @@ $var_objective = 'PageT-'.$type;
 
 
                     <!-- Stories Module -->
-
+                    <input type="hidden" id="r_id">
                     <div class="row mt-4 collapse" id="AddStory">
                         <div class="col-md-12 col-lg-12 col-xl-12">
                             <div class="card comment-card">
@@ -1334,32 +1335,51 @@ $var_objective = 'PageT-'.$type;
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-0">
-                                                <input type="text" class="form-control" id="objective-name" required>
+                                                <input type="text" class="form-control" id="story_title" required>
                                                 <label for="objective-name">Title</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mb-0">
-                                               <select class="form-control" id="flag_type">
-                                                   <option value="">Jhone Doe</option>
-                                               </select>
+                                                <select class="form-control" id="story_assign">
+                                                    <option value="">Select Assignee</option>
+                                                    <?php foreach(DB::table('members')->where('org_user',Auth::id())->get() as $r){ ?>
+                                                      <option value="{{ $r->id }}">{{ $r->name }}</option>
+                                                    <?php }  ?>
+                                                </select>
                                                 <label for="small-description">Assignee</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <div class="form-group mb-0">
-                                               <select class="form-control" id="flag_type">
-                                                   <option value="">Story</option>
-                                                   <option value="">Task</option>
-                                                   <option value="">Defect</option>
+                                               <select class="form-control" id="story_type">
+                                                   <option value="Story">Story</option>
+                                                   <option value="Task">Task</option>
+                                                   <option value="Defect">Defect</option>
                                                </select>
                                                 <label for="small-description">Type</label>
                                             </div>
+                                        </div> --}}
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-0">
+                                               <select class="form-control" id="story_status">
+                                                <option value="">Select Status</option>
+                                                <option value="To Do">To Do</option>
+                                                <option value="In progress">In Progress</option>
+                                                 <option value="Done">Done</option>
+                                               </select>
+                                                <label for="small-description">Status</label>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div>
+                                        <button type="button" onclick="SaveNewStory();" class="btn btn-primary btn-sm">Save</button>
+                                    </div>
+                                  
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="d-flex flex-row justify-content-between">
+                                            {{-- <div class="d-flex flex-row justify-content-between">
                                                 <div class="dropdown">
                                                   <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="7" viewBox="0 0 11 7" fill="none">
@@ -1376,7 +1396,7 @@ $var_objective = 'PageT-'.$type;
                                                     <button class="btn btn-default btn-sm">Cancel</button>
                                                     <button class="btn btn-primary btn-sm">Save Story</button>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -1388,52 +1408,11 @@ $var_objective = 'PageT-'.$type;
                             <!-- Basil Put the progress bar here kindly -->
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="example" class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <td>
-                                            <label class="form-checkbox">
-                                                <input type="checkbox" id="checkAll">
-                                                <span class="checkbox-label"></span>
-                                            </label>
-                                        </td>
-                                        <td>ID</td>
-                                        <td>Title</td>
-                                        <td>Assignee</td>
-                                        <td>Status</td>
-                                        <td>Action</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <label class="form-checkbox">
-                                                <input type="checkbox">
-                                                <span class="checkbox-label"></span>
-                                            </label>
-                                        </td>
-                                        <td>SSP-123</td>
-                                        <td>Finalize Garden Design</td>
-                                        <td class="image-cell">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1Tt9_33HyVMm_ZakYQy-UgsLjE00biEArg&usqp=CAU" alt="Example Image">
-                                            <div>
-                                                <div class="title">Jhon Doe</div>
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn-circle btn-tolbar">
-                                                <img src="images/icons/edit.svg">
-                                            </button>
-                                            <button class="btn-circle btn-tolbar">
-                                                <img src="images/icons/delete.svg">
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="row ">
+                        <div class="col-md-12 story-data">
+                     
+                                   
+                              
                         </div>
                     </div>
 

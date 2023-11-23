@@ -2492,6 +2492,15 @@ class ObjectiveController extends Controller
           
           ]);
     } 
+    if($request->has('epicStory'))
+    foreach($request->epicStory  as $key => $value)
+    {
+      DB::table('epics_stroy')
+      ->where('id',$request->epicStory[$key])
+      ->update([
+        'epic_id' => $EpicId,
+      ]);
+    }
     
         $currentDate = Carbon::now();
         $currentYear = $currentDate->year;
@@ -2776,14 +2785,69 @@ class ObjectiveController extends Controller
             
         }
         
-
-
-         
-        
-         
-
-
     }
+
+    public function SaveNewStory(Request $request)
+    {
+        
+
+          DB::table('epics_stroy')->insert([
+            'epic_story_name' => $request->title,
+            'story_assign' => $request->story_assign,
+            'story_type' => $request->story_type,
+            'story_status' => $request->story_status,
+            'StoryID' => Str::slug('SSP-'.rand(100,999)),
+            'VS_BU_ID' => $request->unit_id,
+            'R_id' => $request->RID,
+            'user_id' => Auth::id(),  
+            ]);
+
+    $story = DB::table('epics_stroy')->where('user_id',Auth::id())->where('epic_id',NULL)
+    ->where('VS_BU_ID',$request->unit_id)
+    ->where('R_id',$request->RID)->get();          
+
+
+    return view('objective.story-render',compact('story'));   
+
+    } 
+    
+    public function UpdateNewStory(Request $request)
+    {
+        
+
+          DB::table('epics_stroy')
+          ->where('id',$request->id)
+           ->update([
+            'epic_story_name' => $request->title,
+            'story_assign' => $request->story_assign,
+            'story_type' => $request->story_type,
+            'story_status' => $request->story_status,
+            ]);
+
+    $story = DB::table('epics_stroy')->where('user_id',Auth::id())->where('epic_id',NULL)
+    ->where('VS_BU_ID',$request->unit_id)
+    ->where('R_id',$request->RID)->get();          
+
+
+    return view('objective.story-render',compact('story'));   
+
+    }   
+    
+    
+    public function DeleteNewStory(Request $request)
+    {
+        
+
+    DB::table('epics_stroy')->where('id',$request->id)->delete();
+
+    $story = DB::table('epics_stroy')->where('user_id',Auth::id())->where('epic_id',NULL)
+    ->where('VS_BU_ID',$request->unit_id)
+    ->where('R_id',$request->RID)->get();          
+
+
+    return view('objective.story-render',compact('story'));   
+
+    }      
     
 
 
