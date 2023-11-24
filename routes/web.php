@@ -218,3 +218,7 @@ Route::name('flags.')->namespace('App\Http\Controllers')->prefix('dashboard/flag
     Route::POST('searchflag', 'FlagController@searchflag');
     Route::POST('createimpediment', 'FlagController@createimpediment');
 });
+
+//EpicComment
+
+Route::post('add-epic-comment', [App\Http\Controllers\ObjectiveController::class, 'SaveComment']);

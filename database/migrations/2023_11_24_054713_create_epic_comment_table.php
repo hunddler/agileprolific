@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFlagCommentsTable extends Migration
+class CreateEpicCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateFlagCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('flag_comments', function (Blueprint $table) {
-            $table->id();
-            $table->string('epic_id');
+        Schema::create('epic_comment', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('epic_id')->nullable();
             $table->string('user_id');
-            $table->longtext('comment');
-            $table->string('type');
-            $table->string('comment_id');
+            $table->text('comment')->nullable();
+            $table->text('r_id')->nullable();
+            $table->boolean('is_publish')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateFlagCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flag_comments');
+        Schema::dropIfExists('epic_comment');
     }
 }

@@ -2791,7 +2791,7 @@ class ObjectiveController extends Controller
     {
         
 
-          DB::table('epics_stroy')->insert([
+         $StoryId =  DB::table('epics_stroy')->insertGetId([
             'epic_story_name' => $request->title,
             'story_assign' => $request->story_assign,
             'story_type' => $request->story_type,
@@ -2801,6 +2801,11 @@ class ObjectiveController extends Controller
             'R_id' => $request->RID,
             'user_id' => Auth::id(),  
             ]);
+      
+    if($request->story_status == 'Done')
+    {
+    DB::table('epics_stroy')->where('id',$StoryId)->update(['progress' => 100]);
+    }  
 
     $story = DB::table('epics_stroy')->where('user_id',Auth::id())->where('epic_id',NULL)
     ->where('VS_BU_ID',$request->unit_id)
@@ -2815,14 +2820,20 @@ class ObjectiveController extends Controller
     {
         
 
-          DB::table('epics_stroy')
-          ->where('id',$request->id)
-           ->update([
+            DB::table('epics_stroy')
+            ->where('id',$request->id)
+            ->update([
             'epic_story_name' => $request->title,
             'story_assign' => $request->story_assign,
             'story_type' => $request->story_type,
             'story_status' => $request->story_status,
             ]);
+
+
+        if($request->story_type == 'Done')
+        {
+        DB::table('epics_stroy')->where('id',$request->id)->update(['progress' => 100]);
+        }        
 
     $story = DB::table('epics_stroy')->where('user_id',Auth::id())->where('epic_id',NULL)
     ->where('VS_BU_ID',$request->unit_id)
@@ -2847,7 +2858,22 @@ class ObjectiveController extends Controller
 
     return view('objective.story-render',compact('story'));   
 
-    }      
+    }
+    
+    public function SaveComment(Request $request)
+    {
+        
+
+         $StoryId =  DB::table('epic_comment')->insertGetId([
+            'comment' => $request->epic_comment,
+            'r_id' => $request->RID,
+            'user_id' => Auth::id(),  
+            ]);
+  
+
+  
+
+    } 
     
 
 

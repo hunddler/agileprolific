@@ -2358,9 +2358,41 @@ function UpdateNewStory(id)
     }
 });
 
+}
 
+   function SaveComment()
+    {
+
+
+  
+    
+    var epic_comment  = $('#epic-comment').val();
+    var unit_id = "{{ $organization->id }}"; 
+    var RID  = $('#r_id').val(); 
+   
+    $.ajax({
+    type: "POST",
+    url: "{{ url('add-epic-comment') }}",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+    epic_comment:epic_comment,    
+    unit_id:unit_id,
+    RID:RID,
+
+    },
+    success: function(res) {
+      
+    $('#epic-comment').val('');
+    // $('.story-data').html(res);
+
+    }
+});
 
 }
+
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

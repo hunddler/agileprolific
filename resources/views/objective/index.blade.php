@@ -98,7 +98,7 @@ $var_objective = 'PageT-'.$type;
           syntax: '<number>';
           inherits: false;
           initial-value: 0;
-        }
+        } */
         
         div[role="progressbar"] {
           --size: 3.5rem;
@@ -123,7 +123,7 @@ $var_objective = 'PageT-'.$type;
         div[role="progressbar"]::before {
           counter-reset: percentage var(--value);
           content: counter(percentage) '%';
-        } */
+        }
         
 </style>
 
@@ -1441,13 +1441,13 @@ $var_objective = 'PageT-'.$type;
                             <div class="d-flex flex-column">
                                 <div>
                                     <div class="form-group mb-0">
-                                        <input type="text" class="form-control" id="objective-name" required>
+                                        <input type="text" class="form-control" id="epic-comment" required>
                                         <label for="objective-name">Write Comment</label>
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="btn btn-default btn-sm">Cancel</button>
-                                    <button class="btn btn-primary btn-sm">Save</button>
+                                    <button type="button" class="btn btn-default btn-sm">Cancel</button>
+                                    <button type="button" onclick="SaveComment();" class="btn btn-primary btn-sm">Save</button>
                                 </div>
                             </div>
                         </div>
